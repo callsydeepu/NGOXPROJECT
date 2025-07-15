@@ -350,112 +350,266 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 80px 40px 0;
-    max-width: 1200px;
+    padding: 80px 60px 0;
+    max-width: 1400px;
     margin: 0 auto;
+    background-color: #f8f9fa;
 }
 
-.contact-title {
+.contact-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.contact-header .contact-title {
     font-weight: 500;
-    font-size: 36px;
+    font-size: 48px;
     color: #0094ff;
-    margin-bottom: 16px;
-    text-align: center;
+    margin-bottom: 12px;
 }
 
-.contact-subtitle {
+.contact-header .contact-subtitle {
     font-weight: 400;
-    font-size: 24px;
-    color: black;
-    margin-bottom: 60px;
-    text-align: center;
+    font-size: 20px;
+    color: #333;
 }
 
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
     align-items: start;
 }
 
-.contact-options {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.contact-options-section {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .contact-options-title {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 24px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 }
 
-.contact-option {
+.contact-options-section .contact-option {
     display: flex;
     align-items: center;
-    gap: 16px;
     padding: 20px;
+    margin-bottom: 16px;
     background: white;
     border-radius: 12px;
     border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.contact-option:hover {
-    background: #f9fafb;
+.contact-options-section .contact-option:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-.contact-option.whatsapp .contact-icon {
-    background: #e7f5e7;
-    color: #25d366;
+.contact-options-section .contact-option:last-child {
+    margin-bottom: 0;
 }
 
-.contact-option.instagram .contact-icon {
-    background: #fce7f3;
-    color: #e1306c;
-}
-
-.contact-option.phone .contact-icon {
-    background: #dbeafe;
-    color: #3b82f6;
-}
-
-.contact-option.email .contact-icon {
-    background: #fef3c7;
-    color: #f59e0b;
-}
-
-.contact-option.address .contact-icon {
-    background: #d1fae5;
-    color: #10b981;
-}
-
-.contact-icon {
+.contact-options-section .contact-icon {
     width: 48px;
     height: 48px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    margin-right: 16px;
     flex-shrink: 0;
 }
 
-.contact-details {
+.contact-options-section .contact-option.whatsapp .contact-icon {
+    background: #dcf8c6;
+    color: #25d366;
+}
+
+.contact-options-section .contact-option.instagram .contact-icon {
+    background: #fce4ec;
+    color: #e1306c;
+}
+
+.contact-options-section .contact-option.phone .contact-icon {
+    background: #e3f2fd;
+    color: #3b82f6;
+}
+
+.contact-options-section .contact-option.email .contact-icon {
+    background: #fff3e0;
+    color: #f59e0b;
+}
+
+.contact-options-section .contact-option.address .contact-icon {
+    background: #e8f5e8;
+    color: #10b981;
+}
+
+.contact-option-content {
     flex: 1;
 }
 
-.contact-details h4 {
+.contact-option-content h4 {
     font-weight: 600;
     font-size: 16px;
     color: #333;
     margin-bottom: 4px;
 }
 
-.contact-details p {
+.contact-option-content p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.contact-arrow {
+    font-size: 24px;
+    color: #9ca3af;
+    font-weight: 300;
+    margin-left: 12px;
+}
+
+.quick-contact-form {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quick-contact-form .form-title {
+    font-weight: 600;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 32px;
+}
+
+.quick-contact-form .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.quick-contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.quick-contact-form .form-group label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+}
+
+.quick-contact-form .form-group input,
+.quick-contact-form .form-group textarea {
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+    color: #374151;
+}
+
+.quick-contact-form .form-group input::placeholder,
+.quick-contact-form .form-group textarea::placeholder {
+    color: #9ca3af;
+}
+
+.quick-contact-form .form-group input:focus,
+.quick-contact-form .form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.quick-contact-form .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.quick-contact-form .send-message-btn {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.quick-contact-form .send-message-btn:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+}
+
+.quick-contact-form .send-message-btn:active {
+    transform: translateY(0);
+}
+
+.quick-contact-form .send-message-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.quick-contact-form .form-success {
+    text-align: center;
+    padding: 32px;
+    background: #f0fdf4;
+    border-radius: 12px;
+    border: 1px solid #bbf7d0;
+}
+
+.quick-contact-form .success-icon {
+    width: 56px;
+    height: 56px;
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto 16px;
+}
+
+.quick-contact-form .form-success h3 {
+    color: #166534;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.quick-contact-form .form-success p {
+    color: #166534;
+    font-size: 14px;
+}
     font-weight: 400;
     font-size: 14px;
     color: #6b7280;
