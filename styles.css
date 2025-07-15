@@ -568,6 +568,9 @@ body {
     justify-content: center;
     gap: 8px;
     margin-top: 4px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .quick-contact-form .send-message-btn:hover {
