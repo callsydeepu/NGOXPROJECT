@@ -1,0 +1,254 @@
+/* Causes Page Specific Styles */
+.causes-main {
+    padding: 0;
+    background-color: white;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background-color: white;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Causes Section */
+.causes-section {
+    padding: 0 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.causes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cause-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.cause-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.cause-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cause-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cause-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.cause-description {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.5;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.cause-accent {
+    width: 40px;
+    height: 3px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.cause-accent.orange {
+    background-color: #ff9869;
+}
+
+.cause-accent.blue {
+    background-color: #4A90E2;
+}
+
+.cause-accent.green {
+    background-color: #7ED321;
+}
+
+.cause-accent.purple {
+    background-color: #9013FE;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #f8f9fa;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cta-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.cta-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background-color: #ff9869;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 152, 105, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #ff7433;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 152, 105, 0.4);
+}
+
+/* Active navigation state */
+.nav a.active {
+    color: #ff9869;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 60px 20px 40px;
+    }
+    
+    .page-title {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+    
+    .page-subtitle {
+        font-size: 14px;
+    }
+    
+    .causes-section {
+        padding: 0 20px 60px;
+    }
+    
+    .causes-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 400px;
+    }
+    
+    .cause-card {
+        padding: 30px 24px;
+    }
+    
+    .cause-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .cause-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .cause-description {
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+    
+    .cta-section {
+        padding: 60px 20px;
+    }
+    
+    .cta-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    
+    .cta-subtitle {
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+    
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 32px;
+    }
+    
+    .cause-card {
+        padding: 24px 20px;
+    }
+    
+    .cause-title {
+        font-size: 15px;
+    }
+    
+    .cause-description {
+        font-size: 12px;
+    }
+    
+    .cta-title {
+        font-size: 24px;
+    }
+}
