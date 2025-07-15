@@ -19,6 +19,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Add functionality for social media icons
+    const socialIcons = document.querySelectorAll('.social-icon');
+    socialIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const platform = this.getAttribute('data-platform');
+            let url = '';
+            
+            switch(platform) {
+                case 'facebook':
+                    url = 'https://facebook.com/srivinayakafoundation';
+                    break;
+                case 'instagram':
+                    url = 'https://instagram.com/srivinayakafoundation';
+                    break;
+                case 'twitter':
+                    url = 'https://twitter.com/srivinayakafoundation';
+                    break;
+                case 'whatsapp':
+                    url = 'https://wa.me/919876543210';
+                    break;
+                case 'youtube':
+                    url = 'https://youtube.com/@srivinayakafoundation';
+                    break;
+                case 'linkedin':
+                    url = 'https://linkedin.com/company/srivinayakafoundation';
+                    break;
+            }
+            
+            if (url) {
+                window.open(url, '_blank');
+            }
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95) translateY(-3px)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+        
+        // Add hover effect for better user experience
+        icon.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+    
     // Add click handlers for donate buttons
     const donateButtons = document.querySelectorAll('.donate-btn');
     
