@@ -20,7 +20,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add functionality for social media icons
-    const socialIcons = document.querySelectorAll('.social-icon');
+    const footerSocialIcons = document.querySelectorAll('.footer .social-icon');
+    footerSocialIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const platform = this.getAttribute('data-platform');
+            let url = '';
+            
+            switch(platform) {
+                case 'facebook':
+                    url = 'https://facebook.com/srivinayakafoundation';
+                    break;
+                case 'instagram':
+                    url = 'https://instagram.com/srivinayakafoundation';
+                    break;
+                case 'twitter':
+                    url = 'https://twitter.com/srivinayakafoundation';
+                    break;
+                case 'linkedin':
+                    url = 'https://linkedin.com/company/srivinayakafoundation';
+                    break;
+            }
+            
+            if (url) {
+                window.open(url, '_blank');
+            }
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95) translateY(-2px)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+    });
+    
+    // Keep existing social icons functionality for other sections
+    const socialIcons = document.querySelectorAll('.social-icon:not(.footer .social-icon)');
     socialIcons.forEach(icon => {
         icon.addEventListener('click', function(e) {
             e.preventDefault();
