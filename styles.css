@@ -637,27 +637,29 @@ body {
     margin-bottom: 40px;
 }
 
-.footer-logo {
+.footer-title-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .footer-logo-img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     background-color: #ff9869;
     border-radius: 50%;
-    padding: 8px;
+    padding: 6px;
+    flex-shrink: 0;
 }
 
 .footer-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     color: #333;
-    margin: 0 0 16px 0;
+    margin: 0;
 }
 
 .footer-description {
