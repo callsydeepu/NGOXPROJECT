@@ -378,7 +378,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     gap: 60px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .contact-options-section {
@@ -386,6 +386,9 @@ body {
     border-radius: 16px;
     padding: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .contact-options-title {
@@ -496,6 +499,9 @@ body {
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .quick-contact-form .form-title {
