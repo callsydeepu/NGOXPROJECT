@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add hover effects for cause cards
-    const causeCards = document.querySelectorAll('.cause-card');
+    const existingCauseCards = document.querySelectorAll('.cause-card');
     
-    causeCards.forEach(card => {
+    existingCauseCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
             this.style.transition = 'transform 0.3s ease';
@@ -134,6 +134,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Make cause cards clickable to navigate to causes page
+    const clickableCauseCards = document.querySelectorAll('.cause-card');
+    clickableCauseCards.forEach(card => {
+        card.addEventListener('click', function() {
+            window.location.href = 'causes.html';
         });
     });
     
