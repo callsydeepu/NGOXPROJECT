@@ -398,7 +398,7 @@ body {
 .contact-options-section .contact-option {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 16px 24px;
     margin-bottom: 16px;
     background: white;
     border-radius: 12px;
@@ -406,6 +406,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    min-width: 100%;
+    width: 100%;
 }
 
 .contact-options-section .contact-option:hover {
@@ -418,13 +420,13 @@ body {
 }
 
 .contact-options-section .contact-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 16px;
+    margin-right: 20px;
     flex-shrink: 0;
 }
 
@@ -459,17 +461,23 @@ body {
 
 .contact-option-content h4 {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     color: #333;
     margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-option-content p {
     font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
     color: #6b7280;
     line-height: 1.4;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-arrow {
@@ -742,22 +750,28 @@ body {
     }
     
     .contact-options-section .contact-option {
-        padding: 16px;
+        padding: 14px 20px;
         margin-bottom: 12px;
     }
     
     .contact-options-section .contact-icon {
-        width: 40px;
-        height: 40px;
-        margin-right: 12px;
+        width: 36px;
+        height: 36px;
+        margin-right: 16px;
     }
     
     .contact-option-content h4 {
-        font-size: 14px;
+        font-size: 13px;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: initial;
     }
     
     .contact-option-content p {
-        font-size: 12px;
+        font-size: 11px;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: initial;
     }
     
     .contact-arrow {
