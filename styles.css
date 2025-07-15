@@ -709,6 +709,16 @@ body {
         gap: 32px;
     }
     
+    .contact-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    
+    .contact-subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+    
     .contact-options {
         gap: 16px;
     }
@@ -721,6 +731,7 @@ body {
     .contact-icon {
         width: 40px;
         height: 40px;
+        font-size: 18px;
     }
     
     .contact-details h4 {
@@ -735,9 +746,56 @@ body {
         padding: 20px;
     }
     
+    .form-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-form {
+        gap: 16px;
+    }
+    
+    .form-group {
+        gap: 4px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+    
+    .form-group textarea {
+        min-height: 80px;
+    }
+    
     .send-message-btn {
         font-size: 14px;
         padding: 12px 20px;
+    }
+    
+    .form-success {
+        padding: 24px;
+    }
+    
+    .success-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .form-success h3 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    
+    .form-success p {
+        font-size: 13px;
     }
     
     .donate-btn.secondary {
