@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clickableCauseCards = document.querySelectorAll('.cause-card');
     clickableCauseCards.forEach(card => {
         card.addEventListener('click', function() {
-            window.location.href = 'causes.html';
+            window.location.href = './causes.html';
         });
     });
     
