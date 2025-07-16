@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create mobile menu elements if they don't exist
         if (!document.querySelector('.hamburger')) {
             // Create hamburger button
-            const hamburger = document.createElement('div');
             const hamburger = document.createElement('button');
             hamburger.className = 'hamburger';
             hamburger.setAttribute('aria-label', 'Toggle navigation menu');
