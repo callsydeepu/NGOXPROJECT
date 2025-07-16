@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNav.appendChild(mobileDonateBtn);
             header.appendChild(mobileNav);
             
+            // Update mobile nav links for causes page
+            const mobileNavCausesLink = mobileNav.querySelector('a[href="#causes"]');
+            if (mobileNavCausesLink) {
+                mobileNavCausesLink.href = 'causes.html';
+            }
+            
             // Add click handler for hamburger
             hamburger.addEventListener('click', function() {
                 mobileNav.classList.toggle('active');
