@@ -1,0 +1,559 @@
+/* Achievements Page Specific Styles */
+
+/* Main Content */
+.achievements-main {
+    width: 100%;
+    min-height: calc(100vh - 96px);
+}
+
+/* Hero Section */
+.achievements-hero {
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 400px;
+    position: relative;
+}
+
+.hero-text {
+    flex: 1;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 72px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 0.9;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.hero-image img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Decorative elements */
+.achievements-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.achievements-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Stats Section */
+.achievements-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    max-width: 1200px;
+    margin: -60px auto 0;
+    position: relative;
+    z-index: 10;
+    padding: 0 40px;
+}
+
+.stat-card {
+    background: white;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stat-card:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
+.stat-card:last-child {
+    border-radius: 0 16px 16px 0;
+    border-right: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: #dc2626;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #dc2626;
+    line-height: 1.3;
+}
+
+/* Achievements Section */
+.achievements-section {
+    padding: 120px 40px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.achievements-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -1px;
+}
+
+/* Category Buttons */
+.achievements-categories {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 12px 24px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    color: #6b7280;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.category-btn:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Achievements Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.achievement-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover img {
+    transform: scale(1.05);
+}
+
+.donate-btn-card {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+}
+
+.achievement-card:hover .donate-btn-card {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.donate-btn-card:hover {
+    background: #16a34a;
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Active nav link */
+.nav a.active {
+    color: #ff9869;
+    background-color: rgba(255, 152, 105, 0.1);
+    border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .achievements-hero {
+        padding: 30px;
+    }
+    
+    .hero-content {
+        min-height: 350px;
+    }
+    
+    .hero-title {
+        font-size: 60px;
+    }
+    
+    .hero-image img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .achievements-stats {
+        margin-top: -50px;
+        padding: 0 30px;
+    }
+    
+    .stat-card {
+        padding: 28px 20px;
+    }
+    
+    .stat-number {
+        font-size: 22px;
+    }
+    
+    .achievements-section {
+        padding: 100px 30px 60px;
+    }
+    
+    .achievements-title {
+        font-size: 42px;
+        margin-bottom: 50px;
+    }
+    
+    .achievements-grid {
+        gap: 24px;
+    }
+    
+    .achievement-card img {
+        height: 240px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        min-height: 500px;
+        padding: 40px 0;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .achievements-stats {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -40px;
+        gap: 16px;
+    }
+    
+    .stat-card {
+        border-radius: 12px;
+        border-right: none;
+        padding: 24px 20px;
+    }
+    
+    .stat-card:first-child,
+    .stat-card:last-child {
+        border-radius: 12px;
+    }
+    
+    .achievements-section {
+        padding: 80px 25px 50px;
+    }
+    
+    .achievements-title {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    
+    .achievements-categories {
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .achievement-card img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .achievements-hero {
+        padding: 20px;
+    }
+    
+    .hero-content {
+        min-height: 400px;
+        gap: 30px;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+    
+    .hero-image img {
+        width: 240px;
+        height: 240px;
+        border-width: 6px;
+    }
+    
+    .achievements-stats {
+        grid-template-columns: 1fr;
+        margin-top: -30px;
+        padding: 0 20px;
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-number {
+        font-size: 20px;
+    }
+    
+    .stat-label {
+        font-size: 13px;
+    }
+    
+    .achievements-section {
+        padding: 60px 20px 40px;
+    }
+    
+    .achievements-title {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+    
+    .achievements-categories {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        margin-bottom: 32px;
+    }
+    
+    .category-btn {
+        flex-shrink: 0;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .achievement-card img {
+        height: 250px;
+    }
+    
+    .donate-btn-card {
+        bottom: 20px;
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-hero {
+        padding: 15px;
+    }
+    
+    .hero-content {
+        min-height: 350px;
+        gap: 24px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        line-height: 1;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+        padding: 4px 10px;
+    }
+    
+    .hero-image img {
+        width: 200px;
+        height: 200px;
+        border-width: 4px;
+    }
+    
+    .achievements-stats {
+        margin-top: -20px;
+        padding: 0 15px;
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .stat-number {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+    
+    .achievements-section {
+        padding: 50px 15px 30px;
+    }
+    
+    .achievements-title {
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+    
+    .achievements-categories {
+        margin-bottom: 24px;
+    }
+    
+    .category-btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .achievements-grid {
+        gap: 16px;
+    }
+    
+    .achievement-card img {
+        height: 200px;
+    }
+    
+    .donate-btn-card {
+        bottom: 16px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile Navigation Active State */
+@media (max-width: 768px) {
+    .mobile-nav .nav a.active {
+        background-color: #ff9869;
+        color: white;
+        border-color: #ff9869;
+    }
+}
