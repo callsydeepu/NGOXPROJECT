@@ -138,10 +138,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Make cause cards clickable to navigate to causes page
+    // Cause cards now scroll to causes section instead
     const clickableCauseCards = document.querySelectorAll('.cause-card');
     clickableCauseCards.forEach(card => {
         card.addEventListener('click', function() {
-            window.location.href = 'causes.html';
+            const causesSection = document.querySelector('#causes');
+            if (causesSection) {
+                causesSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
     
