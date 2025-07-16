@@ -1691,18 +1691,25 @@ img {
         align-items: center;
     }
     
+    .causes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        justify-items: center;
+    }
+    
     .cause-card {
-        min-width: 100%;
-        max-width: 350px;
+        min-width: auto;
+        max-width: none;
         width: 100%;
     }
     
     .cause-image {
-        height: 220px;
+        height: 180px;
     }
     
     .cause-title {
-        font-size: 18px;
+        font-size: 16px;
         padding: 0 16px 16px;
     }
     
@@ -1748,12 +1755,12 @@ img {
     }
     
     .impact-image.large {
-        height: 200px;
+        height: 160px;
     }
     
     .impact-image.wide {
-        grid-column: 1 / -1;
-        height: 180px;
+        grid-column: span 2;
+        height: 140px;
     }
     
     .donate-btn.dark {
@@ -2028,13 +2035,41 @@ img {
     }
     
     .stats {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 10px;
         padding: 45px 18px 35px;
     }
     
     .stat-item {
-        max-width: 220px;
+        max-width: none;
+    }
+    
+    .causes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .cause-image {
+        height: 150px;
+    }
+    
+    .cause-title {
+        font-size: 14px;
+        padding: 0 12px 12px;
+    }
+    
+    .impact-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .impact-image.large {
+        height: 140px;
+    }
+    
+    .impact-image.wide {
+        grid-column: span 2;
+        height: 120px;
     }
     
     .causes {
@@ -2212,13 +2247,41 @@ img {
     }
     
     .stats {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 8px;
         padding: 50px 15px 30px;
     }
     
     .stat-item {
-        max-width: 200px;
+        max-width: none;
+    }
+    
+    .causes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .cause-image {
+        height: 130px;
+    }
+    
+    .cause-title {
+        font-size: 13px;
+        padding: 0 10px 10px;
+    }
+    
+    .impact-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .impact-image.large {
+        height: 120px;
+    }
+    
+    .impact-image.wide {
+        grid-column: span 2;
+        height: 100px;
     }
     
     .stat-value {
@@ -2430,11 +2493,11 @@ img {
 }
 
 @media (max-width: 320px) {
-    .header-content {
-        padding: 0 10px;
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 5px;
+        padding: 40px 10px 20px;
     }
-    
-    .logo {
         width: 35px;
         height: 36px;
     }
@@ -2449,7 +2512,35 @@ img {
     }
     
     .stat-item {
-        max-width: 180px;
+        max-width: none;
+    }
+    
+    .causes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .cause-image {
+        height: 110px;
+    }
+    
+    .cause-title {
+        font-size: 12px;
+        padding: 0 8px 8px;
+    }
+    
+    .impact-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .impact-image.large {
+        height: 100px;
+    }
+    
+    .impact-image.wide {
+        grid-column: span 2;
+        height: 80px;
     }
     
     .stat-value {
