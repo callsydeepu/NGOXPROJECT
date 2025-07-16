@@ -15,9 +15,87 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Close mobile menu if open
+                const mobileNav = document.querySelector('.mobile-nav');
+                if (mobileNav && mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                }
             }
         });
     });
+    
+    // Mobile menu functionality
+    function initializeMobileMenu() {
+        const header = document.querySelector('.header');
+        const headerContent = document.querySelector('.header-content');
+        const nav = document.querySelector('.nav');
+        const donateBtn = document.querySelector('.donate-btn.primary');
+        
+        // Create mobile menu elements if they don't exist
+        if (!document.querySelector('.hamburger')) {
+            // Create hamburger button
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger';
+            hamburger.innerHTML = '☰';
+            headerContent.appendChild(hamburger);
+            
+            // Create mobile navigation
+            const mobileNav = document.createElement('div');
+            mobileNav.className = 'mobile-nav';
+            
+            // Clone navigation and donate button for mobile
+            const mobileNavContent = nav.cloneNode(true);
+            const mobileDonateBtn = donateBtn.cloneNode(true);
+            
+            mobileNav.appendChild(mobileNavContent);
+            mobileNav.appendChild(mobileDonateBtn);
+            header.appendChild(mobileNav);
+            
+            // Add click handler for hamburger
+            hamburger.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                hamburger.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
+            });
+            
+            // Add click handlers for mobile nav links
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    hamburger.innerHTML = '☰';
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    hamburger.innerHTML = '☰';
+                }
+            });
+        }
+    }
+    
+    // Initialize mobile menu
+    initializeMobileMenu();
+    
+    // Handle window resize for mobile menu
+    function handleResize() {
+        const mobileNav = document.querySelector('.mobile-nav');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (window.innerWidth > 768) {
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            if (hamburger) {
+                hamburger.innerHTML = '☰';
+            }
+        }
+    }
+    
+    window.addEventListener('resize', handleResize);
     
     // Add functionality for social media icons
     const footerSocialIcons = document.querySelectorAll('.footer .social-icon');
@@ -128,12 +206,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     existingCauseCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
+            this.style.transform = 'translateY(-8px)';
             this.style.transition = 'transform 0.3s ease';
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
+        });
+        
+        // Add click effect
+        card.addEventListener('click', function() {
+            this.style.transform = 'scale(0.98) translateY(-5px)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-8px)';
+            }, 150);
         });
     });
     
@@ -174,55 +260,6 @@ document.addEventListener('DOMContentLoaded', function() {
         item.style.transform = 'translateY(20px)';
         item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(item);
-    });
-    
-    // Add mobile menu functionality
-    function createMobileMenu() {
-        if (window.innerWidth <= 768) {
-            const nav = document.querySelector('.nav');
-            const header = document.querySelector('.header-content');
-            
-            // Create hamburger menu if it doesn't exist
-            if (!document.querySelector('.hamburger')) {
-                const hamburger = document.createElement('div');
-                hamburger.className = 'hamburger';
-                hamburger.innerHTML = '☰';
-                hamburger.style.cssText = `
-                    font-size: 24px;
-                    cursor: pointer;
-                    display: block;
-                    order: -1;
-                `;
-                
-                hamburger.addEventListener('click', function() {
-                    nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
-                });
-                
-                header.insertBefore(hamburger, nav);
-                nav.style.display = 'none';
-            }
-        }
-    }
-    
-    // Initialize mobile menu
-    createMobileMenu();
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        const nav = document.querySelector('.nav');
-        const hamburger = document.querySelector('.hamburger');
-        
-        if (window.innerWidth > 768) {
-            nav.style.display = 'flex';
-            if (hamburger) {
-                hamburger.style.display = 'none';
-            }
-        } else {
-            if (hamburger) {
-                hamburger.style.display = 'block';
-                nav.style.display = 'none';
-            }
-        }
     });
     
     // Add loading animation
