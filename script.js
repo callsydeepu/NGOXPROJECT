@@ -44,6 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const mobileNav = document.createElement('div');
             mobileNav.className = 'mobile-nav';
             
+            // Create mobile nav header
+            const mobileNavHeader = document.createElement('div');
+            mobileNavHeader.className = 'mobile-nav-header';
+            
+            // Clone logo for mobile nav
+            const mobileLogo = document.querySelector('.logo').cloneNode(true);
+            mobileLogo.className = 'mobile-nav-logo';
+            
+            // Create close button
+            const closeBtn = document.createElement('div');
+            closeBtn.className = 'mobile-nav-close';
+            closeBtn.innerHTML = '✕';
+            
+            mobileNavHeader.appendChild(mobileLogo);
+            mobileNavHeader.appendChild(closeBtn);
+            mobileNav.appendChild(mobileNavHeader);
+            
             // Clone navigation and donate button for mobile
             const mobileNavContent = nav.cloneNode(true);
             const mobileDonateBtn = donateBtn.cloneNode(true);
@@ -61,7 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add click handler for hamburger
             hamburger.addEventListener('click', function() {
                 mobileNav.classList.toggle('active');
-                hamburger.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            // Add click handler for close button
+            closeBtn.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
             });
             
             // Add click handlers for mobile nav links
@@ -69,15 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
+                    document.body.style.overflow = '';
                 });
             });
             
             // Close mobile menu when clicking outside
             document.addEventListener('click', function(e) {
-                if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+                if (!header.contains(e.target) && !mobileNav.contains(e.target) && mobileNav.classList.contains('active')) {
                     mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
+                    document.body.style.overflow = '';
                 }
             });
         }
