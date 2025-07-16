@@ -17,7 +17,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         causes: resolve(__dirname, 'causes.html'),
-        achievements: resolve(__dirname, 'achievements.html')
+        achievements: resolve(__dirname, 'achievements.html'),
+        donate: resolve(__dirname, 'donate.html')
       }
     }
   }
