@@ -28,14 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
     function initializeMobileMenu() {
         const header = document.querySelector('.header');
-        const headerContent = document.querySelector('.header-content');
         const nav = document.querySelector('.nav');
         const donateBtn = document.querySelector('.donate-btn.primary');
         
         // Create mobile menu elements if they don't exist
-        if (!document.querySelector('.hamburger')) {
+        let hamburger = document.querySelector('.hamburger');
+        let mobileNav = document.querySelector('.mobile-nav');
+        
+        if (!hamburger) {
             // Create hamburger button
-            const hamburger = document.createElement('button');
+            hamburger = document.createElement('button');
             hamburger.className = 'hamburger';
             hamburger.setAttribute('aria-label', 'Toggle navigation menu');
             hamburger.innerHTML = `
@@ -43,53 +45,84 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             `;
-            header.appendChild(hamburger);
+            document.querySelector('.header-content').appendChild(hamburger);
+        }
+        
+        if (!mobileNav) {
             
             // Create mobile navigation
-            const mobileNav = document.createElement('div');
+            mobileNav = document.createElement('div');
             mobileNav.className = 'mobile-nav';
             
             // Clone navigation and donate button for mobile
-            const mobileNavContent = nav.cloneNode(true);
-            const mobileDonateBtn = donateBtn.cloneNode(true);
+            if (nav) {
+                const mobileNavContent = nav.cloneNode(true);
+                mobileNav.appendChild(mobileNavContent);
+            }
             
-            mobileNav.appendChild(mobileNavContent);
-            mobileNav.appendChild(mobileDonateBtn);
+            if (donateBtn) {
+                const mobileDonateBtn = donateBtn.cloneNode(true);
+                mobileNav.appendChild(mobileDonateBtn);
+            }
+            
             header.appendChild(mobileNav);
+        }
+        
+        // Ensure event listeners are properly attached
+        if (hamburger && mobileNav) {
+            // Remove existing event listeners to prevent duplicates
+            hamburger.replaceWith(hamburger.cloneNode(true));
+            hamburger = document.querySelector('.hamburger');
             
-            // Copy all event listeners to mobile nav links
-            const originalNavLinks = nav.querySelectorAll('a');
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
-            
-            mobileNavLinks.forEach((link, index) => {
-                const originalLink = originalNavLinks[index];
-                if (originalLink) {
-                    // Copy href and other attributes
-                    link.href = originalLink.href;
-                    link.textContent = originalLink.textContent;
+            // Add click handler for hamburger
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Hamburger clicked'); // Debug log
+                
+                const isActive = mobileNav.classList.contains('active');
+                
+                if (isActive) {
+                    mobileNav.classList.remove('active');
+                    hamburger.classList.remove('active');
+                } else {
+                    mobileNav.classList.add('active');
+                    hamburger.classList.add('active');
                 }
             });
             
-            // Add click handler for hamburger
-            hamburger.addEventListener('click', function() {
-                e.stopPropagation();
-                mobileNav.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
+            // Copy navigation functionality to mobile nav links
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
             
-            // Add click handlers for mobile nav links
             mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function(e) {
+                    // Close mobile menu when link is clicked
                     mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
+                    
+                    // Handle smooth scrolling for anchor links
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
                 });
             });
             
             // Close mobile menu when clicking outside
             document.addEventListener('click', function(e) {
-                if (!mobileNav.contains(e.target) && !hamburger.contains(e.target) && mobileNav.classList.contains('active')) {
-                    mobileNav.classList.remove('active');
-                    hamburger.classList.remove('active');
+                if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+                    if (mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 }
             });
         }

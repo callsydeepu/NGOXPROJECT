@@ -121,10 +121,15 @@ body {
     border-radius: 0 0 12px 12px;
     padding: 20px;
     z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
 .mobile-nav.active {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .mobile-nav .nav {
