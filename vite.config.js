@@ -3,6 +3,9 @@ import { resolve } from 'path';
 
 export default defineConfig({
   base: './',
+  optimizeDeps: {
+    exclude: ['/script.js']
+  },
   server: {
     port: 5173,
     open: true
