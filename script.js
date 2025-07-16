@@ -785,6 +785,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
             });
         });
+    }
     
     // Add keyboard navigation support
     document.addEventListener('keydown', function(e) {
