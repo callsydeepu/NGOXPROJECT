@@ -578,7 +578,11 @@
     
     .donation-summary-section {
         position: static;
-        order: -1;
+        order: 1;
+    }
+    
+    .donation-form-section {
+        order: 0;
     }
     
     .amount-options {
