@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const nav = document.querySelector('.nav');
         const donateBtn = document.querySelector('.donate-btn.primary');
         
-        // Create mobile menu elements if they don't exist
-        if (!document.querySelector('.hamburger')) {
-            // Create hamburger button
-            const hamburger = document.createElement('div');
-            hamburger.className = 'hamburger';
-            hamburger.innerHTML = '☰';
-            headerContent.appendChild(hamburger);
+            // Create mobile menu elements if they don't exist
+    if (!document.querySelector('.hamburger')) {
+        // Create hamburger button
+        const hamburger = document.createElement('div');
+        hamburger.className = 'hamburger';
+        hamburger.innerHTML = '<span></span><span></span><span></span>';
+        headerContent.appendChild(hamburger);
             
             // Create mobile navigation
             const mobileNav = document.createElement('div');
@@ -58,28 +58,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileNavCausesLink.href = 'causes.html';
             }
             
-            // Add click handler for hamburger
-            hamburger.addEventListener('click', function() {
-                mobileNav.classList.toggle('active');
-                hamburger.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
-            });
+                    // Add click handler for hamburger
+        hamburger.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
             
             // Add click handlers for mobile nav links
             const mobileNavLinks = mobileNav.querySelectorAll('a');
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
+                    hamburger.classList.remove('active');
                 });
             });
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
-                    mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
-                }
-            });
+                    // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
         }
     }
     
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileNav.classList.remove('active');
             }
             if (hamburger) {
-                hamburger.innerHTML = '☰';
+                hamburger.classList.remove('active');
             }
         }
     }

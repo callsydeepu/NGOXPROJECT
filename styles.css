@@ -73,52 +73,100 @@ body {
 /* Mobile Menu Styles */
 .hamburger {
     display: none;
-    font-size: 24px;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1001;
 }
 
 .hamburger:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Hamburger Icon Lines */
+.hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.3s;
+    border-radius: 1px;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-4px, 4px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-4px, -4px);
+}
+
 .mobile-nav {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 0 0 12px 12px;
-    padding: 20px;
     z-index: 1000;
+    padding: 80px 20px 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
 }
 
 .mobile-nav.active {
     display: block;
+    transform: translateX(0);
 }
 
 .mobile-nav .nav {
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
     align-items: stretch;
+    margin-top: 20px;
 }
 
 .mobile-nav .nav a {
-    text-align: center;
-    padding: 12px 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    text-align: left;
+    padding: 18px 0;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0;
     transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .mobile-nav .nav a:hover {
-    background-color: #ff9869;
-    color: white;
-    border-color: #ff9869;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.mobile-nav .nav a::after {
+    content: '›';
+    font-size: 20px;
+    color: #999;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav .nav a:hover::after {
+    transform: translateX(5px);
 }
 
 .donate-btn {
@@ -1041,8 +1089,22 @@ body {
     
     .mobile-nav .donate-btn.primary {
         width: 100%;
-        margin-top: 16px;
+        margin-top: 30px;
         order: 4;
+        padding: 16px 24px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #ff6b35, #ff9869);
+        border: none;
+        color: white;
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-nav .donate-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
     }
     
     .stats {
