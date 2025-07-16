@@ -13,7 +13,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        causes: resolve(__dirname, 'causes.html')
+        causes: resolve(__dirname, 'causes.html'),
+        achievements: resolve(__dirname, 'achievements.html')
       }
     }
   }

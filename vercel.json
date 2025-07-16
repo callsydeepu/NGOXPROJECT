@@ -9,6 +9,14 @@
     {
       "source": "/causes/",
       "destination": "/causes.html"
+    },
+    {
+      "source": "/achievements",
+      "destination": "/achievements.html"
+    },
+    {
+      "source": "/achievements/",
+      "destination": "/achievements.html"
     }
   ]
 }
