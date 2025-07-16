@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             `;
-            headerContent.appendChild(hamburger);
+            header.appendChild(hamburger);
             
             // Create mobile navigation
             const mobileNav = document.createElement('div');
@@ -57,20 +57,27 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNav.appendChild(mobileDonateBtn);
             header.appendChild(mobileNav);
             
-            // Update mobile nav links for causes page
-            const mobileNavCausesLink = mobileNav.querySelector('a[href="#causes"]');
-            if (mobileNavCausesLink) {
-                mobileNavCausesLink.href = 'causes.html';
-            }
+            // Copy all event listeners to mobile nav links
+            const originalNavLinks = nav.querySelectorAll('a');
+            const mobileNavLinks = mobileNav.querySelectorAll('a');
+            
+            mobileNavLinks.forEach((link, index) => {
+                const originalLink = originalNavLinks[index];
+                if (originalLink) {
+                    // Copy href and other attributes
+                    link.href = originalLink.href;
+                    link.textContent = originalLink.textContent;
+                }
+            });
             
             // Add click handler for hamburger
             hamburger.addEventListener('click', function() {
+                e.stopPropagation();
                 mobileNav.classList.toggle('active');
                 hamburger.classList.toggle('active');
             });
             
             // Add click handlers for mobile nav links
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileNav.classList.remove('active');
@@ -80,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Close mobile menu when clicking outside
             document.addEventListener('click', function(e) {
-                if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
+                if (!mobileNav.contains(e.target) && !hamburger.contains(e.target) && mobileNav.classList.contains('active')) {
                     mobileNav.classList.remove('active');
                     hamburger.classList.remove('active');
                 }

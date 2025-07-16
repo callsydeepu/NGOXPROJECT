@@ -1035,26 +1035,31 @@ body {
         padding: 0 20px;
         height: 96px;
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     .hamburger {
-        display: block;
         display: flex;
-        order: 2;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        z-index: 1001;
     }
     
     .logo {
-        order: 1;
         width: 45px;
         height: 46px;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .donate-btn.primary {
-        order: 3;
-        width: 100px;
-        height: 35px;
-        font-size: 13px;
-        padding: 8px 16px;
+        display: none;
     }
     
     .nav {
@@ -1069,7 +1074,7 @@ body {
     .mobile-nav .donate-btn.primary {
         width: 100%;
         margin-top: 16px;
-        order: 4;
+        display: block;
     }
     
     .stats {
