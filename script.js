@@ -27,105 +27,114 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile menu functionality
     function initializeMobileMenu() {
-        const header = document.querySelector('.header');
-        const nav = document.querySelector('.nav');
-        const donateBtn = document.querySelector('.donate-btn.primary');
-        
-        // Create mobile menu elements if they don't exist
+        // Check if elements already exist
         let hamburger = document.querySelector('.hamburger');
         let mobileNav = document.querySelector('.mobile-nav');
         
-        if (!hamburger) {
-            // Create hamburger button
-            hamburger = document.createElement('button');
-            hamburger.className = 'hamburger';
-            hamburger.setAttribute('aria-label', 'Toggle navigation menu');
-            hamburger.innerHTML = `
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            `;
-            document.querySelector('.header-content').appendChild(hamburger);
+        // Only create if they don't exist
+        if (!hamburger || !mobileNav) {
+            createMobileMenuElements();
         }
         
-        if (!mobileNav) {
-            
-            // Create mobile navigation
-            mobileNav = document.createElement('div');
-            mobileNav.className = 'mobile-nav';
-            
-            // Clone navigation and donate button for mobile
-            if (nav) {
-                const mobileNavContent = nav.cloneNode(true);
-                mobileNav.appendChild(mobileNavContent);
-            }
-            
-            if (donateBtn) {
-                const mobileDonateBtn = donateBtn.cloneNode(true);
-                mobileNav.appendChild(mobileDonateBtn);
-            }
-            
-            header.appendChild(mobileNav);
+        // Attach event listeners
+        attachMobileMenuEvents();
+    }
+    
+    function createMobileMenuElements() {
+        const header = document.querySelector('.header');
+        const headerContent = document.querySelector('.header-content');
+        const nav = document.querySelector('.nav');
+        const donateBtn = document.querySelector('.donate-btn.primary');
+        
+        // Create hamburger button
+        const hamburger = document.createElement('button');
+        hamburger.className = 'hamburger';
+        hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+        hamburger.innerHTML = `
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        `;
+        headerContent.appendChild(hamburger);
+        
+        // Create mobile navigation
+        const mobileNav = document.createElement('div');
+        mobileNav.className = 'mobile-nav';
+        
+        // Clone navigation for mobile
+        if (nav) {
+            const mobileNavContent = nav.cloneNode(true);
+            mobileNav.appendChild(mobileNavContent);
         }
         
-        // Ensure event listeners are properly attached
-        if (hamburger && mobileNav) {
-            // Remove existing event listeners to prevent duplicates
-            hamburger.replaceWith(hamburger.cloneNode(true));
-            hamburger = document.querySelector('.hamburger');
+        // Clone donate button for mobile
+        if (donateBtn) {
+            const mobileDonateBtn = donateBtn.cloneNode(true);
+            mobileNav.appendChild(mobileDonateBtn);
+        }
+        
+        header.appendChild(mobileNav);
+    }
+    
+    function attachMobileMenuEvents() {
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        if (!hamburger || !mobileNav) return;
+        
+        // Remove existing event listeners to prevent duplicates
+        const newHamburger = hamburger.cloneNode(true);
+        hamburger.parentNode.replaceChild(newHamburger, hamburger);
+        
+        // Add click handler for hamburger
+        newHamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
-            // Add click handler for hamburger
-            hamburger.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Hamburger clicked'); // Debug log
+            const isActive = mobileNav.classList.contains('active');
+            
+            if (isActive) {
+                mobileNav.classList.remove('active');
+                newHamburger.classList.remove('active');
+            } else {
+                mobileNav.classList.add('active');
+                newHamburger.classList.add('active');
+            }
+        });
+        
+        // Add event listeners to mobile nav links
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Close mobile menu when link is clicked
+                mobileNav.classList.remove('active');
+                newHamburger.classList.remove('active');
                 
-                const isActive = mobileNav.classList.contains('active');
-                
-                if (isActive) {
-                    mobileNav.classList.remove('active');
-                    hamburger.classList.remove('active');
-                } else {
-                    mobileNav.classList.add('active');
-                    hamburger.classList.add('active');
-                }
-            });
-            
-            // Copy navigation functionality to mobile nav links
-            const mobileNavLinks = mobileNav.querySelectorAll('a');
-            
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Close mobile menu when link is clicked
-                    mobileNav.classList.remove('active');
-                    hamburger.classList.remove('active');
+                // Handle smooth scrolling for anchor links
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
                     
-                    // Handle smooth scrolling for anchor links
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetSection = document.querySelector(targetId);
-                        
-                        if (targetSection) {
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                });
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
-                    if (mobileNav.classList.contains('active')) {
-                        mobileNav.classList.remove('active');
-                        hamburger.classList.remove('active');
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 }
             });
-        }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileNav.contains(e.target) && !newHamburger.contains(e.target)) {
+                if (mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    newHamburger.classList.remove('active');
+                }
+            }
+        });
     }
     
     // Initialize mobile menu

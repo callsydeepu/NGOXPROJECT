@@ -74,40 +74,38 @@ body {
 .hamburger {
     display: none;
     flex-direction: column;
-    justify-content: space-around;
-    width: 24px;
+    justify-content: space-between;
+    width: 30px;
     height: 24px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
     background: transparent;
     border: none;
-    position: relative;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1001;
 }
 
 .hamburger-line {
-    width: 100%;
+    width: 30px;
     height: 2px;
-    background-color: #333;
+    background-color: #000;
+    border-radius: 1px;
     transition: all 0.3s ease;
-    transform-origin: center;
 }
 
-.hamburger.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+.hamburger.active .hamburger-line:first-child {
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
     opacity: 0;
 }
 
-.hamburger.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
-.hamburger:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+.hamburger.active .hamburger-line:last-child {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .mobile-nav {
@@ -117,11 +115,11 @@ body {
     left: 0;
     right: 0;
     background: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-radius: 0 0 12px 12px;
-    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 30px;
     z-index: 1000;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
 }
@@ -129,6 +127,7 @@ body {
 .mobile-nav.active {
     display: block;
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
 }
 
@@ -147,9 +146,14 @@ body {
 }
 
 .mobile-nav .nav a:hover {
-    background-color: #ff9869;
-    color: white;
-    border-color: #ff9869;
+    background-color: rgba(255, 152, 105, 0.1);
+    color: #ff9869;
+}
+
+.mobile-nav .donate-btn {
+    width: 100%;
+    margin-top: 16px;
+    display: block !important;
 }
 
 .donate-btn {
@@ -1041,26 +1045,17 @@ body {
         height: 96px;
         position: relative;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
     }
     
     .hamburger {
         display: flex;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        z-index: 1001;
     }
     
     .logo {
         width: 45px;
         height: 46px;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
     }
     
     .donate-btn.primary {
@@ -1074,12 +1069,6 @@ body {
     .header {
         height: auto;
         min-height: 96px;
-    }
-    
-    .mobile-nav .donate-btn.primary {
-        width: 100%;
-        margin-top: 16px;
-        display: block;
     }
     
     .stats {
