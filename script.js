@@ -36,8 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!document.querySelector('.hamburger')) {
             // Create hamburger button
             const hamburger = document.createElement('div');
+            const hamburger = document.createElement('button');
             hamburger.className = 'hamburger';
-            hamburger.innerHTML = '☰';
+            hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+            hamburger.innerHTML = `
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            `;
             headerContent.appendChild(hamburger);
             
             // Create mobile navigation
@@ -61,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add click handler for hamburger
             hamburger.addEventListener('click', function() {
                 mobileNav.classList.toggle('active');
-                hamburger.innerHTML = mobileNav.classList.contains('active') ? '✕' : '☰';
+                hamburger.classList.toggle('active');
             });
             
             // Add click handlers for mobile nav links
@@ -69,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
+                    hamburger.classList.remove('active');
                 });
             });
             
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('click', function(e) {
                 if (!header.contains(e.target) && mobileNav.classList.contains('active')) {
                     mobileNav.classList.remove('active');
-                    hamburger.innerHTML = '☰';
+                    hamburger.classList.remove('active');
                 }
             });
         }
@@ -96,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileNav.classList.remove('active');
             }
             if (hamburger) {
-                hamburger.innerHTML = '☰';
+                hamburger.classList.remove('active');
             }
         }
     }
