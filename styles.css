@@ -384,7 +384,7 @@ body {
 
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 60px;
     align-items: stretch;
 }
@@ -417,7 +417,6 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    min-width: 100%;
     width: 100%;
 }
 
@@ -468,6 +467,7 @@ body {
 
 .contact-option-content {
     flex: 1;
+    min-width: 0;
 }
 
 .contact-option-content h4 {
@@ -475,9 +475,7 @@ body {
     font-size: 15px;
     color: #333;
     margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.3;
 }
 
 .contact-option-content p {
@@ -486,9 +484,6 @@ body {
     color: #6b7280;
     line-height: 1.4;
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .contact-arrow {
@@ -496,6 +491,7 @@ body {
     color: #9ca3af;
     font-weight: 300;
     margin-left: 12px;
+    flex-shrink: 0;
 }
 
 .quick-contact-form {
@@ -504,9 +500,7 @@ body {
     padding: 22px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -547,6 +541,8 @@ body {
     transition: all 0.3s ease;
     background: #f9fafb;
     color: #374151;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .quick-contact-form .form-group input::placeholder,
@@ -585,7 +581,6 @@ body {
     gap: 8px;
     margin-top: 4px;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -730,6 +725,53 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .contact-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .contact-options-section {
+        padding: 28px;
+    }
+    
+    .quick-contact-form {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 992px) {
+    .contact {
+        padding: 60px 30px 10px;
+    }
+    
+    .contact-header .contact-title {
+        font-size: 40px;
+    }
+    
+    .contact-container {
+        gap: 32px;
+    }
+    
+    .contact-options-section .contact-option {
+        padding: 14px 20px;
+    }
+    
+    .contact-options-section .contact-icon {
+        width: 36px;
+        height: 36px;
+        margin-right: 16px;
+    }
+    
+    .contact-option-content h4 {
+        font-size: 14px;
+    }
+    
+    .contact-option-content p {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 768px) {
     .header-content {
         padding: 0 20px;
@@ -854,17 +896,11 @@ body {
     }
     
     .contact-option-content h4 {
-        font-size: 13px;
-        white-space: normal;
-        overflow: visible;
-        text-overflow: initial;
+        font-size: 14px;
     }
     
     .contact-option-content p {
-        font-size: 11px;
-        white-space: normal;
-        overflow: visible;
-        text-overflow: initial;
+        font-size: 12px;
     }
     
     .contact-arrow {
@@ -963,5 +999,90 @@ body {
     .social-icon {
         width: 40px;
         height: 40px;
+    }
+}
+@media (max-width: 480px) {
+    .contact {
+        padding: 30px 15px 0;
+    }
+    
+    .contact-header .contact-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .contact-header .contact-subtitle {
+        font-size: 14px;
+    }
+    
+    .contact-container {
+        gap: 24px;
+    }
+    
+    .contact-options-section {
+        padding: 20px;
+    }
+    
+    .contact-options-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-options-section .contact-option {
+        padding: 12px 16px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    
+    .contact-options-section .contact-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 12px;
+    }
+    
+    .contact-option-content h4 {
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+    
+    .contact-option-content p {
+        font-size: 11px;
+    }
+    
+    .contact-arrow {
+        font-size: 18px;
+        margin-left: 6px;
+    }
+    
+    .quick-contact-form {
+        padding: 20px;
+    }
+    
+    .quick-contact-form .form-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .quick-contact-form .contact-form {
+        gap: 16px;
+    }
+    
+    .quick-contact-form .form-group label {
+        font-size: 12px;
+    }
+    
+    .quick-contact-form .form-group input,
+    .quick-contact-form .form-group textarea {
+        padding: 12px;
+        font-size: 12px;
+    }
+    
+    .quick-contact-form .form-group textarea {
+        min-height: 80px;
+    }
+    
+    .quick-contact-form .send-message-btn {
+        font-size: 13px;
+        padding: 12px 18px;
     }
 }
