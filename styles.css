@@ -529,7 +529,7 @@ img {
 .contact {
     padding: 80px 40px 30px;
     max-width: 1450px;
-    /* max-height: 800px; */
+    background: transparent;
     margin: 0 auto;
   /* margin-bottom:3000px; */
     background-color: black;
