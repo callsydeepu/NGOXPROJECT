@@ -531,6 +531,7 @@ img {
     max-width: 1400px;
     margin: 0 auto;
     background-color: #f8f9fa;
+    padding-bottom: 42px;
 }
 
 .contact-header {
