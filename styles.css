@@ -529,10 +529,7 @@ img {
 .contact {
     padding: 80px 40px 30px;
     max-width: 1450px;
-    background: transparent;
     margin: 0 auto;
-  /* margin-bottom:3000px; */
-    background-color: black;
 }
 
 .contact-header {
@@ -2243,8 +2240,8 @@ img {
     }
     
     .contact {
-        padding: 35px 18px 0;
-        min-height: 370px;
+        padding: 40px 20px 0;
+        min-height: 420px;
     }
     
     .contact-header .contact-title {
