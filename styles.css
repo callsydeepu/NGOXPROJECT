@@ -355,26 +355,18 @@ img {
     min-width: 280px;
     max-width: 400px;
     cursor: pointer;
-    transition: all 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
 }
 
-.cause-card:hover {
-    transform: translateY(-8px);
-}
 
 .cause-image {
     width: 100%;
     height: 301px;
     object-fit: cover;
     margin-bottom: 14px;
-    transition: transform 0.3s ease;
 }
 
-.cause-card:hover .cause-image {
-    transform: scale(1.05);
-}
 
 .cause-title {
     font-weight: 400;
