@@ -2215,11 +2215,15 @@ img {
     }
     
     .causes {
-        padding: 70px 40px 0;
+        padding: 60px 30px;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
     }
     
     .section-title {
-        font-size: 36px;
+        font-size: 42px;
         padding: 12px 26px;
     }
     
@@ -2248,15 +2252,17 @@ img {
     }
     
     .cause-card {
-        min-width: 260px;
+        flex: 0 0 320px;
+        min-width: 320px;
     }
     
     .cause-image {
-        height: 260px;
+        height: 240px;
     }
     
     .cause-title {
-        font-size: 19px;
+        padding: 20px;
+        font-size: 18px;
     }
     
     .causes-donate-section {
@@ -2472,36 +2478,38 @@ img {
     }
     
     .causes {
-        padding: 60px 30px 0;
+        padding: 50px 25px;
     }
     
     .section-header {
-        margin-bottom: 35px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        margin-bottom: 30px;
     }
     
     .section-title {
-        font-size: 32px;
-        padding: 11px 22px;
+        font-size: 36px;
     }
     
     .causes-grid {
-        gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        justify-content: center;
-        max-width: 800px;
+        gap: 24px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     
     .cause-card {
-        min-width: 250px;
+        flex: 0 0 280px;
+        min-width: 280px;
     }
     
     .cause-image {
-        height: 240px;
+        height: 200px;
     }
     
     .cause-title {
-        font-size: 18px;
-        padding: 0 14px 16px;
+        padding: 16px;
+        font-size: 16px;
     }
     
     .causes-donate-section {
@@ -3029,7 +3037,7 @@ img {
     }
     
     .causes {
-        padding: 50px 20px 0;
+        padding: 40px 20px;
     }
     
     .section-header {
@@ -3040,7 +3048,7 @@ img {
     }
     
     .section-title {
-        font-size: 26px;
+        font-size: 32px;
         padding: 9px 18px;
         order: 1;
     }
@@ -3058,12 +3066,9 @@ img {
     }
     
     .causes-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        justify-items: center;
-        max-width: 450px;
-        margin: 0 auto;
+        padding-left: 5px;
+        padding-right: 5px;
     }
     
     .causes-donate-section {
@@ -3073,18 +3078,17 @@ img {
     }
     
     .cause-card {
-        min-width: auto;
-        max-width: none;
-        width: 100%;
+        flex: 0 0 260px;
+        min-width: 260px;
     }
     
     .cause-image {
-        height: 160px;
+        height: 180px;
     }
     
     .cause-title {
+        padding: 14px;
         font-size: 15px;
-        padding: 0 12px 14px;
     }
     
     .donate-btn.secondary {
@@ -3825,7 +3829,7 @@ img {
     }
     
     .causes {
-        padding: 30px 12px 0;
+        padding: 30px 15px;
     }
     
     .section-header {
@@ -3834,7 +3838,7 @@ img {
     }
     
     .section-title {
-        font-size: 22px;
+        font-size: 28px;
         padding: 7px 14px;
     }
     
@@ -3851,17 +3855,22 @@ img {
     
     .causes-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        gap: 16px;
         max-width: 400px;
     }
     
+    .cause-card {
+        flex: 0 0 240px;
+        min-width: 240px;
+    }
+    
     .cause-image {
-        height: 120px;
+        height: 160px;
     }
     
     .cause-title {
-        font-size: 12px;
-        padding: 0 8px 8px;
+        padding: 12px;
+        font-size: 14px;
     }
     
     .causes-donate-section {
