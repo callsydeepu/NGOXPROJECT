@@ -527,8 +527,8 @@ img {
 
 /* Contact Section */
 .contact {
-    padding: 80px 80px 30px;
-    max-width: 1400px;
+    padding: 80px 40px 30px;
+    max-width: 1420px;
     max-height: 800px;
     margin: 0 auto;
     background-color: black;
