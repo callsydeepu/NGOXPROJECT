@@ -547,9 +547,9 @@ img {
 }
 
 .contact-container {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 20px;
+    gap: 60px;
     align-items: stretch;
     max-width: 1200px;
     margin: 0 auto;
@@ -1436,7 +1436,7 @@ img {
     .contact-container {
         grid-template-columns: 1fr 1fr;
         gap: 40px;
-        max-width: 650px;
+        max-width: 1000px;
         justify-items: center;
     }
     
@@ -1569,8 +1569,8 @@ img {
     
     .contact-container {
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        max-width: 900px;
+        gap: 32px;
+        max-width: 800px;
         justify-items: center;
     }
     
@@ -1919,10 +1919,10 @@ img {
     
     .contact-container {
         grid-template-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 24px;
         max-width: 700px;
         justify-items: center;
+        padding: 0 20px;
     }
     
     .contact-options-section {
@@ -2265,10 +2265,11 @@ img {
     }
     
     .contact-container {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        max-width: 450px;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 500px;
         justify-items: center;
+        padding: 0 18px;
     }
     
     .contact-options-section {
@@ -2343,7 +2344,7 @@ img {
     .header-content {
         padding: 0 15px;
     }
-        margin: 0 auto;
+    
     .logo {
         width: 40px;
         height: 41px;
@@ -2490,10 +2491,11 @@ img {
     }
     
     .contact-container {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        max-width: 400px;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        max-width: 450px;
         justify-items: center;
+        padding: 0 15px;
     }
     
     .contact-options-section {
@@ -2628,178 +2630,48 @@ img {
     }
 }
 
-@media (max-width: 320px) {
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px 5px;
-        padding: 40px 10px 20px;
-    }
-        width: 35px;
-        height: 36px;
-    }
-    
-    .hero {
-        height: 200px;
-    }
-    
-    .stats {
-        padding: 40px 10px 20px;
-        gap: 20px;
-    }
-    
-        grid-template-columns: 1fr 1fr;
-    .stat-item {
-        max-width: 700px;
-        max-width: none;
-    }
-    
-    .causes-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    
-    .cause-image {
-        height: 110px;
-    }
-    
-    .cause-title {
-        font-size: 12px;
-        padding: 0 8px 8px;
-    }
-    
-    .impact-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-    
-    .impact-image.large {
-        height: 100px;
-    }
-    
-    .impact-image.wide {
-        grid-column: span 2;
-        height: 80px;
-    }
-    
-    .stat-value {
-        font-size: 14px;
-    }
-    
-    .stat-label {
-        font-size: 12px;
-    }
-    
-    .causes {
-        padding: 30px 10px 0;
-    }
-    
-    .section-title {
-        font-size: 20px;
-        padding: 6px 12px;
-    }
-    
-    .cause-image {
-        height: 180px;
-    }
-    
-    .cause-title {
-        font-size: 14px;
-        padding: 0 10px 10px;
-    }
-    
-    .about {
-        padding: 40px 10px;
-    }
-    
-    .about-title {
-        font-size: 22px;
-    }
-    
-    .about-text {
-        font-size: 14px;
-    }
-    
-    .impact {
-        padding: 40px 10px 0;
-    }
-    
-    .impact-title {
-        font-size: 22px;
-    }
-    
-    .impact-subtitle {
-        font-size: 16px;
-    }
-    
-    .impact-gallery {
-        gap: 8px;
-    }
-    
-    .impact-image.large {
-        height: 150px;
-    }
-    
-    .impact-image.wide {
-        height: 120px;
-    }
-    
-    .transparency {
-        padding: 80px 10px 0;
-    }
-    
-    .transparency-title {
-        font-size: 20px;
-    }
-    
-    .transparency-subtitle {
-        font-size: 16px;
-    }
-    
-    .transparency-text {
-        font-size: 13px;
-    }
-    
-    .background-section {
-        margin-top: 30px;
-    }
-    
-    .background-image {
-        height: 150px;
-    }
-    
-    .contact {
-        padding: 25px 10px 0;
-        min-height: 320px;
-    }
-    
-    .contact-header .contact-title {
-        font-size: 24px;
-    }
-    
-    .contact-header .contact-subtitle {
-        font-size: 13px;
-    }
-    
+@media (max-width: 360px) {
     .contact-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 320px;
-        justify-items: center;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        max-width: 340px;
+        padding: 0 10px;
     }
     
     .contact-options-section {
         padding: 20px;
-        min-height: 260px;
         width: 100%;
         max-width: none;
     }
     
-    .contact-options-title {
-        font-size: 16px;
+    .quick-contact-form {
+        padding: 20px;
+        width: 100%;
+        max-width: none;
     }
     
-    .contact-options-section .contact-option {
-        padding: 10px 12px;
+    .quick-contact-form .form-group input,
+    .quick-contact-form .form-group textarea {
+        font-size: 11px;
+    }
+}
+
+/* Only stack vertically on very small screens */
+@media (max-width: 320px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 300px;
+        padding: 0 10px;
+    }
+    
+    .contact-options-section,
+    .quick-contact-form {
+        width: 100%;
+    }
+    
+    .contact-option {
+        padding: 12px;
     }
     
     .contact-option-content h4 {
@@ -2810,82 +2682,17 @@ img {
         font-size: 10px;
     }
     
-    .quick-contact-form {
-        padding: 20px;
-        width: 100%;
-        max-width: none;
-    }
-    
-    .quick-contact-form .form-title {
+    .form-title {
         font-size: 16px;
     }
     
-    .quick-contact-form .form-group input,
-    .quick-contact-form .form-group textarea {
-@media (max-width: 600px) {
+    .form-group label {
         font-size: 11px;
     }
     
-    .footer {
-        padding: 40px 0 20px;
-    }
-    
-    .footer-content {
-        padding: 0 10px;
-    }
-    
-    .footer-title {
-        font-size: 20px;
-    }
-    
-    .footer-description {
-        font-size: 12px;
-    }
-    
-    .social-icons {
-        gap: 15px;
-    }
-    
-    .social-icon {
-        width: 35px;
-        height: 35px;
-    }
-    
-    .modal-content {
-        padding: 14px;
-        max-width: 280px;
-    }
-    
-    .modal-header h2 {
-        font-size: 16px;
-    }
-    
-    .amount-btn {
-        padding: 6px;
-        font-size: 12px;
-    }
-    
-    .payment-btn {
-        padding: 6px;
-        font-size: 10px;
-    }
-    
-    .proceed-btn {
-        padding: 8px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 320px) {
-    .contact-options-section {
-        padding: 20px;
-        width: 100%;
-        max-width: none;
-    }
-    
-    .quick-contact-form {
-        padding: 20px;
-        width: 100%;
-        max-width: none;
+    .form-group input,
+    .form-group textarea {
+        padding: 8px 10px;
+        font-size: 11px;
     }
 }
