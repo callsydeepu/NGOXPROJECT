@@ -527,17 +527,17 @@ img {
 
 /* Contact Section */
 .contact {
-    /* padding: 80px 40px 30px; */
-  padding-right:5000px;
+    padding: 80px 40px 30px;
     max-width: 1450px;
     max-height: 800px;
-    /* margin: 0 auto; */
+    margin: 0 auto;
+  margin-bottom:30px;
     background-color: black;
 }
 
 .contact-header {
     text-align: center;
-    margin-bottom: 1000px;
+    margin-bottom: 80px;
 }
 
 .contact-header .contact-title {
