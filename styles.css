@@ -560,6 +560,7 @@ img {
     align-items: stretch;
     max-width: 1200px;
     margin: 0 auto;
+    justify-items: center;
     padding-bottom:330px;
 }
 
@@ -572,6 +573,7 @@ img {
     flex-direction: column;
     min-height: 500px;
     max-width: 400px;
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -681,6 +683,7 @@ img {
     flex-direction: column;
     height: 100%;
     max-width: 500px;
+    justify-self: center;
 }
 
 .quick-contact-form .form-title {
@@ -1441,17 +1444,22 @@ img {
         grid-template-columns: 1fr;
         gap: 40px;
         max-width: 600px;
+        justify-items: center;
     }
     
     .contact-options-section {
         padding: 32px;
         max-width: none;
         min-height: 450px;
+        width: 100%;
+        max-width: 600px;
     }
     
     .quick-contact-form {
         padding: 32px;
         max-width: none;
+        width: 100%;
+        max-width: 600px;
     }
     
     .modal-content {
@@ -1569,6 +1577,7 @@ img {
     .contact-container {
         gap: 32px;
         max-width: 500px;
+        justify-items: center;
     }
     
     .contact-options-section .contact-option {
@@ -1904,11 +1913,14 @@ img {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 32px;
+        justify-items: center;
     }
     
     .contact-options-section {
         padding: 32px;
         min-height: 400px;
+        width: 100%;
+        max-width: 500px;
     }
     
     .contact-options-title {
@@ -1942,6 +1954,8 @@ img {
     
     .quick-contact-form {
         padding: 32px;
+        width: 100%;
+        max-width: 500px;
     }
     
     .quick-contact-form .form-title {
@@ -2241,9 +2255,16 @@ img {
         font-size: 15px;
     }
     
+    .contact-container {
+        gap: 24px;
+        justify-items: center;
+    }
+    
     .contact-options-section {
         padding: 32px;
         min-height: 350px;
+        width: 100%;
+        max-width: 450px;
     }
     
     .contact-options-title {
@@ -2252,6 +2273,8 @@ img {
     
     .quick-contact-form {
         padding: 32px;
+        width: 100%;
+        max-width: 450px;
     }
     
     .quick-contact-form .form-title {
@@ -2456,11 +2479,14 @@ img {
     
     .contact-container {
         gap: 24px;
+        justify-items: center;
     }
     
     .contact-options-section {
         padding: 32px;
         min-height: 300px;
+        width: 100%;
+        max-width: 400px;
     }
     
     .contact-options-title {
@@ -2496,6 +2522,8 @@ img {
     
     .quick-contact-form {
         padding: 32px;
+        width: 100%;
+        max-width: 400px;
     }
     
     .quick-contact-form .form-title {
@@ -2738,6 +2766,8 @@ img {
     
     .contact-options-section {
         padding: 32px;
+        width: 100%;
+        max-width: 350px;
     }
     
     .contact-options-title {
@@ -2758,6 +2788,8 @@ img {
     
     .quick-contact-form {
         padding: 32px;
+        width: 100%;
+        max-width: 350px;
     }
     
     .quick-contact-form .form-title {
@@ -2817,5 +2849,19 @@ img {
     .proceed-btn {
         padding: 8px;
         font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .contact-options-section {
+        padding: 32px;
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .quick-contact-form {
+        padding: 32px;
+        width: 100%;
+        max-width: 320px;
     }
 }
