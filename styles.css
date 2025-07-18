@@ -529,7 +529,7 @@ img {
 .contact {
     padding: 80px 40px 30px;
     max-width: 1400px;
-    min-height: 6000px;
+    max-height: 620px;
     margin: 0 auto;
     background-color: #f8f9fa;
 }
@@ -1320,7 +1320,7 @@ img {
     
     .contact {
         padding: 80px 50px 20px;
-        min-height: 520px;
+        max-height: 520px;
     }
     
     .footer {
@@ -1557,7 +1557,7 @@ img {
     
     .contact {
         padding: 60px 30px 10px;
-        min-height: 470px;
+        max-height: 470px;
     }
     
     .contact-header .contact-title {
@@ -1883,7 +1883,7 @@ img {
     
     .contact {
         padding: 40px 20px 0;
-        min-height: 420px;
+        max-height: 420px;
     }
     
     .contact-header {
@@ -2228,7 +2228,7 @@ img {
     
     .contact {
         padding: 35px 18px 0;
-        min-height: 370px;
+        max-height: 370px;
     }
     
     .contact-header .contact-title {
@@ -2440,7 +2440,7 @@ img {
     
     .contact {
         padding: 30px 15px 0;
-        min-height: 320px;
+        max-height: 320px;
     }
     
     .contact-header .contact-title {
@@ -2723,7 +2723,7 @@ img {
     
     .contact {
         padding: 25px 10px 0;
-        min-height: 320px;
+        max-height: 320px;
     }
     
     .contact-header .contact-title {
