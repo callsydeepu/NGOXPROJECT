@@ -547,7 +547,7 @@ img {
 }
 
 .contact-container {
-    display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-template-columns: 1fr 1.2fr;
     gap: 20px;
     align-items: stretch;
@@ -1434,7 +1434,7 @@ img {
     }
     
     .contact-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 40px;
         max-width: 650px;
         justify-items: center;
@@ -1528,7 +1528,7 @@ img {
         gap: 25px;
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;
-        max-width: 600px;
+        max-width: 1000px;
         margin: 0 auto;
     }
     
@@ -1919,6 +1919,7 @@ img {
     
     .contact-container {
         grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
         max-width: 700px;
         justify-items: center;
@@ -2278,6 +2279,7 @@ img {
     }
     
     .contact-options-title {
+        max-width: 800px;
         font-size: 19px;
     }
     
@@ -2645,7 +2647,9 @@ img {
         gap: 20px;
     }
     
+        grid-template-columns: 1fr 1fr;
     .stat-item {
+        max-width: 700px;
         max-width: none;
     }
     
@@ -2818,7 +2822,7 @@ img {
     
     .quick-contact-form .form-group input,
     .quick-contact-form .form-group textarea {
-        padding: 10px;
+@media (max-width: 600px) {
         font-size: 11px;
     }
     
