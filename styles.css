@@ -558,9 +558,9 @@ img {
     grid-template-columns: 0.8fr 1fr;
     gap: 60px;
     align-items: stretch;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-  padding-bottom:60px;
+    padding-bottom:60px;
 }
 
 .contact-options-section {
