@@ -527,11 +527,11 @@ img {
 
 /* Contact Section */
 .contact {
-    padding: 80px 40px 50px 70px;
+    padding: 80px 40px 30px;
     max-width: 1400px;
     margin: 0 auto;
     background-color: #f8f9fa;
-    padding-bottom: 42px;
+    padding-bottom: 50px;
 }
 
 .contact-header {
