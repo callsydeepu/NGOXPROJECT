@@ -2697,3 +2697,37 @@ img {
         font-size: 11px;
     }
 }
+
+/* Stack vertically on very small screens */
+@media (max-width: 576px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+        justify-items: stretch;
+    }
+    
+    .contact-options-section,
+    .quick-contact-form {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+        justify-items: stretch;
+        padding: 0 15px;
+    }
+    
+    .contact-options-section {
+        order: 1;
+    }
+    
+    .quick-contact-form {
+        order: 2;
+    }
+}
