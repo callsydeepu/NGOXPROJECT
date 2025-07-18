@@ -564,7 +564,7 @@ img {
 .contact-options-section {
     background: white;
     border-radius: 16px;
-    padding: 32px 32px;
+    padding: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
@@ -671,7 +671,7 @@ img {
 .quick-contact-form {
     background: white;
     border-radius: 16px;
-    padding: 14px;
+    padding: 32px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
     box-sizing: border-box;
@@ -1442,13 +1442,13 @@ img {
     }
     
     .contact-options-section {
-        padding: 28px 28px;
+        padding: 32px;
         max-width: none;
         min-height: 450px;
     }
     
     .quick-contact-form {
-        padding: 20px;
+        padding: 32px;
         max-width: none;
     }
     
@@ -1570,7 +1570,7 @@ img {
     }
     
     .contact-options-section .contact-option {
-        padding: 14px 20px;
+        padding: 18px 24px;
     }
     
     .contact-options-section .contact-icon {
@@ -1905,7 +1905,7 @@ img {
     }
     
     .contact-options-section {
-        padding: 24px 24px;
+        padding: 32px;
         min-height: 400px;
     }
     
@@ -1939,7 +1939,7 @@ img {
     }
     
     .quick-contact-form {
-        padding: 16px;
+        padding: 32px;
     }
     
     .quick-contact-form .form-title {
@@ -2240,7 +2240,7 @@ img {
     }
     
     .contact-options-section {
-        padding: 20px 22px;
+        padding: 32px;
         min-height: 350px;
     }
     
@@ -2249,7 +2249,7 @@ img {
     }
     
     .quick-contact-form {
-        padding: 14px;
+        padding: 32px;
     }
     
     .quick-contact-form .form-title {
@@ -2457,7 +2457,7 @@ img {
     }
     
     .contact-options-section {
-        padding: 16px 20px;
+        padding: 32px;
         min-height: 300px;
     }
     
@@ -2493,7 +2493,7 @@ img {
     }
     
     .quick-contact-form {
-        padding: 12px;
+        padding: 32px;
     }
     
     .quick-contact-form .form-title {
@@ -2533,7 +2533,7 @@ img {
     }
     
     .modal-content {
-        padding: 16px;
+        padding: 32px;
         max-width: 300px;
     }
     
@@ -2735,7 +2735,7 @@ img {
     }
     
     .contact-options-section {
-        padding: 7px;
+        padding: 32px;
     }
     
     .contact-options-title {
@@ -2755,7 +2755,7 @@ img {
     }
     
     .quick-contact-form {
-        padding: 7px;
+        padding: 32px;
     }
     
     .quick-contact-form .form-title {
