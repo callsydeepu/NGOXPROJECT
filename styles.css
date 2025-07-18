@@ -556,7 +556,7 @@ img {
 .contact-container {
     display: grid;
     grid-template-columns: 0.8fr 1fr;
-    gap: 110px;
+    gap: 200px;
     align-items: stretch;
     max-width: 1200px;
     margin: 0 auto;
