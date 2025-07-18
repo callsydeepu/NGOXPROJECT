@@ -529,9 +529,9 @@ img {
 .contact {
     padding: 80px 40px 30px;
     max-width: 1450px;
-    max-height: 800px;
-    /* margin: 0 auto; */
-  margin-bottom:3000px;
+    /* max-height: 800px; */
+    margin: 0 auto;
+  /* margin-bottom:3000px; */
     background-color: black;
 }
 
@@ -556,13 +556,12 @@ img {
 .contact-container {
     display: grid;
     grid-template-columns: 0.8fr 1fr;
-    gap: 60px;
+    gap: 100px;
     align-items: stretch;
     max-width: 1200px;
-    margin: 0 a
-      uto;
+    margin: 0 auto;
     justify-items: center;
-    padding-bottom:330px;
+    /* padding-bottom:330px; */
 }
 
 .contact-options-section {
