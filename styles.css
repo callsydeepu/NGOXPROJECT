@@ -1145,8 +1145,7 @@ img {
     overflow: hidden;
     position: relative;
     background: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .cause-card::before {
@@ -1168,7 +1167,6 @@ img {
 
 .cause-card:hover {
     transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .cause-image {
