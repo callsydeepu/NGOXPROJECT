@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
     
     // Initialize causes carousel
-    const carouselController = initializeCausesCarousel();
+    const carouselController = initializeCausesSlider();
     
     // Handle window resize for mobile menu
     function handleResize() {
@@ -199,82 +199,304 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('resize', handleResize);
     
-    // Causes Carousel Functionality
-    function initializeCausesCarousel() {
-        const carousel = document.querySelector('.causes-grid');
-        const carouselContainer = document.querySelector('.causes-carousel-container');
+    // Causes Slider Functionality
+    function initializeCausesSlider() {
+        const slider = document.querySelector('.causes-slider');
+        const sliderContainer = document.querySelector('.causes-slider-container');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const cards = document.querySelectorAll('.cause-card');
-        const progressFill = document.querySelector('.scroll-progress-fill');
+        const slides = document.querySelectorAll('.cause-slide');
+        const indicators = document.querySelectorAll('.indicator');
         
-        if (!carousel || !prevBtn || !nextBtn || !carouselContainer) return null;
+        if (!slider || !prevBtn || !nextBtn || !sliderContainer) return null;
         
-        let isScrolling = false;
+        let currentSlide = 0;
+        let isAnimating = false;
         let autoSlideInterval;
-        let currentScrollPosition = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isDragging = false;
         
-        function getCardWidth() {
-            const card = cards[0];
-            if (!card) return 320;
-            const cardRect = card.getBoundingClientRect();
-            const gap = 24; // Gap between cards
-            return cardRect.width + gap;
+        function getSlideWidth() {
+            const slide = slides[0];
+            if (!slide) return 320;
+            const slideRect = slide.getBoundingClientRect();
+            const gap = 24;
+            return slideRect.width + gap;
         }
         
-        function getMaxScroll() {
-            return carousel.scrollWidth - carousel.clientWidth;
+        function getVisibleSlides() {
+            const containerWidth = slider.clientWidth;
+            const slideWidth = getSlideWidth();
+            return Math.floor(containerWidth / slideWidth);
         }
         
-        function updateScrollPosition() {
-            currentScrollPosition = carousel.scrollLeft;
+        function getMaxSlide() {
+            const visibleSlides = getVisibleSlides();
+            return Math.max(0, slides.length - visibleSlides);
+        }
+        
+        function updateSliderPosition() {
             updateNavigationButtons();
-            updateProgressBar();
-            updateFadeEdges();
+            updateIndicators();
         }
         
         function updateNavigationButtons() {
-            const maxScroll = getMaxScroll();
-            prevBtn.disabled = currentScrollPosition <= 0;
-            nextBtn.disabled = currentScrollPosition >= maxScroll - 1;
-        }
-        
-        function updateProgressBar() {
-            if (!progressFill) return;
-            const maxScroll = getMaxScroll();
-            const progress = maxScroll > 0 ? (currentScrollPosition / maxScroll) * 100 : 0;
-            progressFill.style.width = `${Math.min(progress, 100)}%`;
-        }
-        
-        function updateFadeEdges() {
-            const maxScroll = getMaxScroll();
-            carouselContainer.classList.toggle('at-start', currentScrollPosition <= 0);
-            carouselContainer.classList.toggle('at-end', currentScrollPosition >= maxScroll - 1);
-        }
-        
-        function scrollToPosition(position, smooth = true) {
-            if (isScrolling) return;
+            const maxSlide = getMaxSlide();
+            prevBtn.disabled = currentSlide <= 0;
+            nextBtn.disabled = currentSlide >= maxSlide;
             
-            isScrolling = true;
-            carousel.scrollTo({
-                left: position,
+            prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+            nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+        }
+        
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function scrollToSlide(slideIndex, smooth = true) {
+            if (isAnimating) return;
+            
+            const maxSlide = getMaxSlide();
+            currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
+            
+            const slideWidth = getSlideWidth();
+            const scrollPosition = currentSlide * slideWidth;
+            
+            isAnimating = true;
+            
+            slider.scrollTo({
+                left: scrollPosition,
                 behavior: smooth ? 'smooth' : 'auto'
             });
             
             setTimeout(() => {
-                isScrolling = false;
-                updateScrollPosition();
-            }, smooth ? 600 : 100);
+                isAnimating = false;
+                updateSliderPosition();
+            }, smooth ? 500 : 100);
         }
         
-        function scrollByAmount(amount) {
-            const newPosition = Math.max(0, Math.min(currentScrollPosition + amount, getMaxScroll()));
-            scrollToPosition(newPosition);
+        function nextSlide() {
+            scrollToSlide(currentSlide + 1);
         }
         
-        function scrollToNextCard() {
-            const cardWidth = getCardWidth();
-            scrollByAmount(cardWidth);
+        function prevSlide() {
+            scrollToSlide(currentSlide - 1);
+        }
+        
+        function goToSlide(slideIndex) {
+            scrollToSlide(slideIndex);
+        }
+        
+        function autoScroll() {
+            const maxSlide = getMaxSlide();
+            if (currentSlide >= maxSlide) {
+                scrollToSlide(0);
+            } else {
+                nextSlide();
+            }
+        }
+        
+        function startAutoScroll() {
+            autoSlideInterval = setInterval(autoScroll, 4000);
+        }
+        
+        function stopAutoScroll() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+        
+        function resetAutoScroll() {
+            stopAutoScroll();
+            startAutoScroll();
+        }
+        
+        // Event Listeners
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoScroll();
+            
+            prevBtn.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                prevBtn.style.transform = '';
+            }, 150);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoScroll();
+            
+            nextBtn.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                nextBtn.style.transform = '';
+            }, 150);
+        });
+        
+        // Indicator click handlers
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoScroll();
+            });
+        });
+        
+        // Touch/Swipe Support
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isDragging = true;
+            stopAutoScroll();
+        }, { passive: true });
+        
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.changedTouches[0].screenX;
+            const diffX = touchStartX - currentX;
+            const diffY = Math.abs(e.changedTouches[0].screenY - touchStartX);
+            
+            if (Math.abs(diffX) > diffY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        slider.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            isDragging = false;
+            handleSwipe();
+            resetAutoScroll();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diffX = touchStartX - touchEndX;
+            
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+        
+        // Mouse wheel support
+        slider.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
+                
+                if (e.deltaX > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                resetAutoScroll();
+            }
+        }, { passive: false });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.target.closest('.causes') || document.activeElement === slider) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        prevSlide();
+                        resetAutoScroll();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        nextSlide();
+                        resetAutoScroll();
+                        break;
+                    case ' ':
+                        e.preventDefault();
+                        nextSlide();
+                        resetAutoScroll();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        goToSlide(0);
+                        resetAutoScroll();
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        goToSlide(getMaxSlide());
+                        resetAutoScroll();
+                        break;
+                }
+            }
+        });
+        
+        // Pause auto-scroll on hover
+        sliderContainer.addEventListener('mouseenter', stopAutoScroll);
+        sliderContainer.addEventListener('mouseleave', startAutoScroll);
+        
+        // Card click handlers
+        slides.forEach((slide, index) => {
+            slide.addEventListener('click', () => {
+                if (index !== currentSlide) {
+                    goToSlide(index);
+                    resetAutoScroll();
+                }
+            });
+        });
+        
+        // Initialize slider
+        function updateLayout() {
+            updateSliderPosition();
+        }
+        
+        // Entrance animations
+        slides.forEach((slide, index) => {
+            slide.style.opacity = '0';
+            slide.style.transform = 'translateY(40px) scale(0.9)';
+            slide.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        setTimeout(() => {
+            slides.forEach((slide, index) => {
+                setTimeout(() => {
+                    slide.style.opacity = '1';
+                    slide.style.transform = 'translateY(0) scale(1)';
+                }, index * 150);
+            });
+        }, 100);
+        
+        // Initialize
+        updateSliderPosition();
+        startAutoScroll();
+        
+        // Intersection Observer for performance
+        const slideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.willChange = 'transform';
+                } else {
+                    entry.target.style.willChange = 'auto';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        slides.forEach(slide => slideObserver.observe(slide));
+        
+        return {
+            updateLayout: updateLayout,
+            nextSlide: nextSlide,
+            prevSlide: prevSlide,
+            goToSlide: goToSlide
+        };
+    }
+    
+    // Legacy function cleanup - remove old carousel code
+    function initializeCausesCarousel() {
+        // This function is now replaced by initializeCausesSlider
+        return initializeCausesSlider();
+    }
         }
         
         function scrollToPrevCard() {
