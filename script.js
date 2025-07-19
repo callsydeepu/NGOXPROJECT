@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
     
     // Initialize causes carousel
-    initializeCausesCarousel();
+    const carouselController = initializeCausesCarousel();
     
     // Handle window resize for mobile menu
     function handleResize() {
@@ -192,7 +192,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Update carousel on resize
-        updateCarouselLayout();
+        if (carouselController && carouselController.updateLayout) {
+            carouselController.updateLayout();
+        }
     }
     
     window.addEventListener('resize', handleResize);
@@ -205,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const indicators = document.querySelectorAll('.carousel-indicator');
         const cards = document.querySelectorAll('.cause-card');
         
-        if (!carousel || !prevBtn || !nextBtn) return;
+        if (!carousel || !prevBtn || !nextBtn) return null;
         
         let currentSlide = 0;
         let cardsPerView = getCardsPerView();
@@ -412,9 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Initialize carousel
-        updateCarousel();
-        updateIndicators();
-        updateNavigationButtons();
+        updateCarouselLayout();
         startAutoSlide();
         
         // Add entrance animation for cards
@@ -428,6 +428,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             updateCarousel();
         }, 100);
+        
+        // Return controller object
+        return {
+            updateLayout: updateCarouselLayout
+        };
     }
     
     // Add functionality for social media icons
