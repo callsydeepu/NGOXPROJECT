@@ -636,14 +636,8 @@ img {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     line-height: 1.3;
-    transform: translateY(20px);
     opacity: 0;
     transition: all 0.4s ease;
-}
-
-.cause-card:hover .cause-title {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 .cause-overlay {
@@ -658,11 +652,6 @@ img {
         rgba(255, 116, 51, 0.8) 100%
     );
     opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.cause-card:hover .cause-overlay {
-    opacity: 1;
 }
 
 /* Navigation Buttons */
@@ -1076,11 +1065,6 @@ img {
     margin-bottom: 14px;
     transition: all 0.4s ease;
     position: relative;
-    z-index: 2;
-}
-
-.cause-card:hover .cause-image {
-    transform: scale(1.05);
 }
 
 .cause-title {
