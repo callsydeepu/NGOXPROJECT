@@ -2718,6 +2718,10 @@ img {
         padding: 0 50px;
     }
     
+    .cause-card {
+        flex: 0 0 260px;
+    }
+    
     .hero {
         height: 400px;
     }
@@ -2831,8 +2835,9 @@ img {
         padding: 80px 40px 50px;
         gap: 25px 20px;
     }
-    
-    .stat-item {
+    .cause-card {
+        flex: 0 0 240px;
+        height: 320px;
         min-width: 180px;
         padding: 18px;
     }
@@ -3445,8 +3450,8 @@ img {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
     
-    .cause-image {
-        height: 250px;
+    .causes-grid {
+        gap: 24px;
     }
     
     .cause-title {
@@ -3647,9 +3652,9 @@ img {
         border-color: #ff9869;
     }
     
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+    .cause-card {
+        flex: 0 0 220px;
+        height: 300px;
         padding: 40px 20px;
     }
     
@@ -3772,8 +3777,9 @@ img {
     }
     
     .cause-card {
-        height: 220px;
-        border-radius: 10px;
+    .causes-grid {
+        gap: 20px;
+        padding: 0 12px;
     }
     
     .cause-title {
@@ -4853,10 +4859,9 @@ img {
         height: 20px;
     }
     
-    .causes-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 400px;
+    .cause-card {
+        flex: 0 0 200px;
+        height: 280px;
     }
     
     .cause-card {
@@ -5676,8 +5681,9 @@ button:focus,
     /* Dark mode styles would go here */
 }
 
-/* Stack contact sections vertically on small screens */
-@media (max-width: 576px) {
+    .causes-grid {
+        gap: 16px;
+        padding: 0 8px;
     .contact-container {
         grid-template-columns: 1fr;
         gap: 24px;
