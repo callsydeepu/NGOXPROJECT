@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Category filtering functionality
     const categoryButtons = document.querySelectorAll('.category-btn');
     const achievementCards = document.querySelectorAll('.achievement-card');
+    const categorySections = document.querySelectorAll('.category-section');
+    const achievementsGrid = document.querySelector('.achievements-grid');
     
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -15,22 +17,35 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get selected category
             const selectedCategory = this.getAttribute('data-category');
             
+            // Hide all category sections
+            categorySections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected category section
+            const targetSection = document.querySelector(`.category-section[data-category="${selectedCategory}"]`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                // Hide the main grid when showing category sections
+                achievementsGrid.style.display = 'none';
+            } else {
+                // If no specific section found, show all cards in main grid
+                achievementsGrid.style.display = 'grid';
+            }
+            
+            // Special case for "all" or when no category sections exist
+            if (selectedCategory === 'all' || !targetSection) {
+                categorySections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                achievementsGrid.style.display = 'grid';
+            }
+            
             // Add animation effect
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
-            
-            // Filter cards (for now, just show all - you can implement filtering logic here)
-            achievementCards.forEach(card => {
-                card.style.opacity = '0.5';
-                card.style.transform = 'scale(0.95)';
-                
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 200);
-            });
             
             console.log('Selected category:', selectedCategory);
         });
@@ -159,4 +174,15 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         document.body.style.opacity = '1';
     });
+    
+    // Initialize with first category active
+    const firstCategoryBtn = document.querySelector('.category-btn.active');
+    if (firstCategoryBtn) {
+        const firstCategory = firstCategoryBtn.getAttribute('data-category');
+        const firstSection = document.querySelector(`.category-section[data-category="${firstCategory}"]`);
+        if (firstSection) {
+            firstSection.classList.add('active');
+            achievementsGrid.style.display = 'none';
+        }
+    }
 });

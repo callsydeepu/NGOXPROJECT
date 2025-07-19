@@ -209,6 +209,45 @@
     gap: 32px;
 }
 
+/* Category Sections */
+.category-section {
+    width: 100%;
+    margin-bottom: 80px;
+    display: none; /* Hidden by default, shown when category is active */
+}
+
+.category-section.active {
+    display: block;
+}
+
+.category-section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+.category-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    border-radius: 2px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
 .achievement-card {
     position: relative;
     border-radius: 16px;
@@ -398,6 +437,16 @@
         gap: 20px;
     }
     
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .category-section-title {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+    
     .achievement-card img {
         height: 180px;
     }
@@ -475,6 +524,18 @@
         gap: 20px;
         max-width: 400px;
         margin: 0 auto;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .category-section-title {
+        font-size: 24px;
+        margin-bottom: 24px;
     }
     
     .achievement-card img {
@@ -556,6 +617,19 @@
         gap: 16px;
     }
     
+    .category-grid {
+        gap: 16px;
+    }
+    
+    .category-section {
+        margin-bottom: 60px;
+    }
+    
+    .category-section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
     .achievement-card img {
         height: 200px;
     }
@@ -623,6 +697,16 @@
         gap: 15px;
     }
     
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .category-section-title {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+    
     .achievement-card img {
         height: 150px;
     }
@@ -687,8 +771,21 @@
     
     .achievements-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
         gap: 12px;
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .category-section {
+        margin-bottom: 50px;
+    }
+    
+    .category-section-title {
+        font-size: 18px;
+        margin-bottom: 16px;
     }
     
     .achievement-card img {
