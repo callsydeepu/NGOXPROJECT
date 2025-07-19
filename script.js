@@ -213,17 +213,27 @@ document.addEventListener('DOMContentLoaded', function() {
         let isScrolling = false;
         let autoSlideInterval;
         let currentScrollPosition = 0;
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
         
         function getCardWidth() {
             const card = cards[0];
             if (!card) return 320;
             const cardRect = card.getBoundingClientRect();
-            const gap = 24; // Gap between cards
+            const computedStyle = window.getComputedStyle(carousel);
+            const gap = parseInt(computedStyle.gap) || 24;
             return cardRect.width + gap;
         }
         
         function getMaxScroll() {
             return carousel.scrollWidth - carousel.clientWidth;
+        }
+        
+        function getVisibleCards() {
+            const containerWidth = carousel.clientWidth;
+            const cardWidth = getCardWidth();
+            return Math.floor(containerWidth / cardWidth);
         }
         
         function updateScrollPosition() {
@@ -237,6 +247,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxScroll = getMaxScroll();
             prevBtn.disabled = currentScrollPosition <= 0;
             nextBtn.disabled = currentScrollPosition >= maxScroll - 1;
+            
+            // Add visual feedback
+            prevBtn.style.opacity = currentScrollPosition <= 0 ? '0.4' : '1';
+            nextBtn.style.opacity = currentScrollPosition >= maxScroll - 1 ? '0.4' : '1';
         }
         
         function updateProgressBar() {
@@ -273,13 +287,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function scrollToNextCard() {
+            const visibleCards = getVisibleCards();
             const cardWidth = getCardWidth();
-            scrollByAmount(cardWidth);
+            const scrollAmount = cardWidth * Math.max(1, visibleCards - 1);
+            scrollByAmount(scrollAmount);
         }
         
         function scrollToPrevCard() {
+            const visibleCards = getVisibleCards();
             const cardWidth = getCardWidth();
-            scrollByAmount(-cardWidth);
+            const scrollAmount = cardWidth * Math.max(1, visibleCards - 1);
+            scrollByAmount(-scrollAmount);
         }
         
         function autoScroll() {
@@ -293,7 +311,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function startAutoScroll() {
-            autoSlideInterval = setInterval(autoScroll, 4000);
+            if (cards.length > getVisibleCards()) {
+                autoSlideInterval = setInterval(autoScroll, 5000);
+            }
         }
         
         function stopAutoScroll() {
@@ -313,6 +333,37 @@ document.addEventListener('DOMContentLoaded', function() {
             updateNavigationButtons();
             updateProgressBar();
             updateFadeEdges();
+        }
+        
+        // Enhanced mouse drag support
+        function handleMouseDown(e) {
+            isDragging = true;
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+            carousel.style.cursor = 'grabbing';
+            carousel.style.userSelect = 'none';
+            stopAutoScroll();
+        }
+        
+        function handleMouseMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        }
+        
+        function handleMouseUp() {
+            isDragging = false;
+            carousel.style.cursor = 'grab';
+            carousel.style.userSelect = '';
+            resetAutoScroll();
+        }
+        
+        function handleMouseLeave() {
+            if (isDragging) {
+                handleMouseUp();
+            }
         }
         
         // Event listeners
@@ -338,6 +389,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 150);
         });
         
+        // Mouse drag events
+        carousel.addEventListener('mousedown', handleMouseDown);
+        carousel.addEventListener('mousemove', handleMouseMove);
+        carousel.addEventListener('mouseup', handleMouseUp);
+        carousel.addEventListener('mouseleave', handleMouseLeave);
+        
+        // Prevent default drag behavior on images
+        carousel.addEventListener('dragstart', (e) => e.preventDefault());
+        
         // Scroll event listener
         carousel.addEventListener('scroll', () => {
             if (!isScrolling) {
@@ -350,17 +410,19 @@ document.addEventListener('DOMContentLoaded', function() {
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
-        let isDragging = false;
+        let isTouchDragging = false;
+        let touchStartTime = 0;
         
         carousel.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
-            isDragging = true;
+            touchStartTime = Date.now();
+            isTouchDragging = true;
             stopAutoScroll();
-        });
+        }, { passive: true });
         
         carousel.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
+            if (!isTouchDragging) return;
             
             const currentX = e.changedTouches[0].screenX;
             const currentY = e.changedTouches[0].screenY;
@@ -368,42 +430,52 @@ document.addEventListener('DOMContentLoaded', function() {
             const diffY = Math.abs(touchStartY - currentY);
             
             // Prevent vertical scrolling if horizontal swipe is detected
-            if (Math.abs(diffX) > diffY) {
+            if (Math.abs(diffX) > diffY && Math.abs(diffX) > 10) {
                 e.preventDefault();
             }
-        });
+        }, { passive: false });
         
         carousel.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
+            if (!isTouchDragging) return;
             
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
-            isDragging = false;
+            isTouchDragging = false;
             handleSwipe();
             resetAutoScroll();
-        });
+        }, { passive: true });
         
         function handleSwipe() {
-            const swipeThreshold = 80;
+            const swipeThreshold = 50;
+            const swipeTime = Date.now() - touchStartTime;
+            const swipeVelocity = Math.abs(touchStartX - touchEndX) / swipeTime;
             const diffX = touchStartX - touchEndX;
             const diffY = Math.abs(touchStartY - touchEndY);
             
-            // Only handle horizontal swipes
-            if (Math.abs(diffX) > swipeThreshold && diffY < 150) {
+            // Only handle horizontal swipes with sufficient velocity or distance
+            if ((Math.abs(diffX) > swipeThreshold || swipeVelocity > 0.5) && diffY < 100) {
+                const scrollAmount = swipeVelocity > 1 ? getCardWidth() * 2 : getCardWidth();
+                
                 if (diffX > 0) {
-                    scrollToNextCard(); // Swipe left - scroll right
+                    // Swipe left - scroll right
+                    scrollByAmount(scrollAmount);
                 } else {
-                    scrollToPrevCard(); // Swipe right - scroll left
+                    // Swipe right - scroll left
+                    scrollByAmount(-scrollAmount);
                 }
             }
         }
         
         // Mouse wheel support
         carousel.addEventListener('wheel', (e) => {
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+            const isHorizontalScroll = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+            const isShiftPressed = e.shiftKey;
+            
+            if (isHorizontalScroll || isShiftPressed) {
                 // Horizontal scroll
                 e.preventDefault();
-                scrollByAmount(e.deltaX);
+                const scrollAmount = isShiftPressed ? e.deltaY : e.deltaX;
+                scrollByAmount(scrollAmount * 2);
                 resetAutoScroll();
             }
         }, { passive: false });
@@ -412,9 +484,17 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselContainer.addEventListener('mouseenter', stopAutoScroll);
         carouselContainer.addEventListener('mouseleave', startAutoScroll);
         
+        // Focus management for accessibility
+        carousel.addEventListener('focus', stopAutoScroll);
+        carousel.addEventListener('blur', startAutoScroll);
+        
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.target.closest('.causes') || document.activeElement === carousel) {
+            const isCarouselFocused = e.target.closest('.causes') || 
+                                    document.activeElement === carousel ||
+                                    carousel.contains(document.activeElement);
+            
+            if (isCarouselFocused) {
                 switch(e.key) {
                     case 'ArrowLeft':
                         e.preventDefault();
@@ -447,6 +527,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Card click handlers with improved UX
         cards.forEach((card, index) => {
+            // Make cards focusable
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `View ${card.querySelector('.cause-title').textContent} cause`);
+            
             card.addEventListener('click', () => {
                 // Scroll card into center view
                 const cardWidth = getCardWidth();
@@ -456,8 +541,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 scrollToPosition(Math.max(0, Math.min(centerPosition, getMaxScroll())));
                 resetAutoScroll();
+                
+                // Navigate to causes page after a short delay
+                setTimeout(() => {
+                    window.location.href = 'causes.html';
+                }, 300);
+            });
+            
+            // Keyboard support for cards
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+            
+            // Enhanced hover effects
+            card.addEventListener('mouseenter', () => {
+                card.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.zIndex = '';
             });
         });
+        
+        // Resize observer for responsive updates
+        if (window.ResizeObserver) {
+            const resizeObserver = new ResizeObserver(() => {
+                updateCarouselLayout();
+            });
+            resizeObserver.observe(carousel);
+        }
         
         // Initialize carousel
         updateCarouselLayout();
@@ -485,17 +600,31 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.willChange = 'transform';
+                    entry.target.classList.add('in-view');
                 } else {
                     entry.target.style.willChange = 'auto';
+                    entry.target.classList.remove('in-view');
                 }
             });
         }, { threshold: 0.1 });
         
         cards.forEach(card => cardObserver.observe(card));
         
+        // Add cursor style
+        carousel.style.cursor = 'grab';
+        
         // Return controller object
         return {
-            updateLayout: updateCarouselLayout
+            updateLayout: updateCarouselLayout,
+            scrollToCard: (index) => {
+                const cardWidth = getCardWidth();
+                const position = index * cardWidth;
+                scrollToPosition(position);
+            },
+            getCurrentCard: () => {
+                const cardWidth = getCardWidth();
+                return Math.round(currentScrollPosition / cardWidth);
+            }
         };
     }
     
