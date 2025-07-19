@@ -56,26 +56,58 @@
             <div class="section-header">
                 <h2 class="section-title">Our Causes</h2>
                 <div class="nav-icon">
-                    <img src="/image-2.png" alt="Navigation">
+                    <button class="carousel-nav-btn" id="prevBtn" aria-label="Previous slide">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-nav-btn" id="nextBtn" aria-label="Next slide">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
 
             <div class="causes-content">
-                <div class="causes-grid-wrapper">
+                <div class="causes-carousel-container">
                     <div class="causes-grid">
                         <div class="cause-card">
+                            <div class="cause-overlay"></div>
                             <img src="/rectangle-5.png" alt="Food & Nutrition" class="cause-image">
                             <h3 class="cause-title">Food & Nutrition</h3>
                         </div>
                         <div class="cause-card">
+                            <div class="cause-overlay"></div>
                             <img src="/rectangle-6.png" alt="Animal Rescue & Care" class="cause-image">
                             <h3 class="cause-title">Animal Rescue & Care</h3>
                         </div>
                         <div class="cause-card">
+                            <div class="cause-overlay"></div>
                             <img src="/rectangle-7.png" alt="Orphanage Care & Support" class="cause-image">
                             <h3 class="cause-title">Orphanage Care & Support</h3>
                         </div>
+                        <div class="cause-card">
+                            <div class="cause-overlay"></div>
+                            <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Education for Children" class="cause-image">
+                            <h3 class="cause-title">Education for Children</h3>
+                        </div>
+                        <div class="cause-card">
+                            <div class="cause-overlay"></div>
+                            <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Community Support" class="cause-image">
+                            <h3 class="cause-title">Community Support</h3>
+                        </div>
+                        <div class="cause-card">
+                            <div class="cause-overlay"></div>
+                            <img src="https://images.pexels.com/photos/7516340/pexels-photo-7516340.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Healthcare Services" class="cause-image">
+                            <h3 class="cause-title">Healthcare Services</h3>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active" data-slide="0"></div>
+                    <div class="carousel-indicator" data-slide="1"></div>
                 </div>
                 
                 <div class="causes-donate-section">
