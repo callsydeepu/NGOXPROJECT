@@ -78,6 +78,7 @@
     background: white;
     border-radius: 16px;
     padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
@@ -317,6 +318,7 @@
 .form-group textarea:focus {
     outline: none;
     border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .form-group input::placeholder,
@@ -385,6 +387,7 @@
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .cause-image {
@@ -410,6 +413,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .foundation-logo img {
@@ -436,6 +440,7 @@
     border-radius: 16px;
     padding: 24px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .summary-row {
@@ -484,6 +489,7 @@
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .certificate-check {
@@ -528,6 +534,7 @@
 .proceed-btn:hover {
     background: #dc2626;
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
 }
 
 .proceed-btn svg {
