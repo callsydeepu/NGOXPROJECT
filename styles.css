@@ -606,7 +606,6 @@ img {
 
 .cause-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .cause-card .donate-btn-overlay {
@@ -639,7 +638,6 @@ img {
 .cause-card .donate-btn-overlay:hover {
     background: #ff7433;
     transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 152, 105, 0.4);
 }
 
 .cause-image {
@@ -1476,7 +1474,6 @@ img {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .transparency-card::before {
@@ -1492,7 +1489,6 @@ img {
 
 .transparency-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
 }
 
 .transparency-card:hover::before {
@@ -1723,7 +1719,6 @@ img {
     border: 1px solid #e5e7eb;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -1742,7 +1737,6 @@ img {
 
 .contact-options-section .contact-option:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     border-color: rgba(0, 148, 255, 0.3);
 }
 
@@ -1850,7 +1844,6 @@ img {
     justify-self: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .quick-contact-form::before {
@@ -2564,13 +2557,13 @@ img {
     background: white;
     border-radius: 12px;
     padding: 16px 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    z-index: 10000;
+    border-left: 4px solid #3b82f6;
     transform: translateX(100%);
     opacity: 0;
     transition: all 0.3s ease;
+    z-index: 1000;
     max-width: 400px;
-    border-left: 4px solid #3b82f6;
+    min-width: 300px;
 }
 
 .notification.success {
