@@ -33,7 +33,8 @@ img {
     z-index: 100;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    border-bottom: 2px solid rgba(255, 152, 105, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -75,7 +76,7 @@ img {
     font-size: 16px;
     color: black;
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding: 12px 20px;
     white-space: nowrap;
     padding: 8px 12px;
     border-radius: 6px;
@@ -170,8 +171,9 @@ img {
 .mobile-nav.active {
     display: block;
     opacity: 1;
-    visibility: visible;
+    padding: 24px;
     transform: translateY(0);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-nav .nav {
@@ -187,6 +189,10 @@ img {
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
     overflow: hidden;
 }
 
@@ -201,8 +207,56 @@ img {
     transition: left 0.4s ease;
 }
 
-.mobile-nav .nav a:hover {
-    background-color: rgba(255, 152, 105, 0.1);
+    color: #ff7433;
+    background-color: rgba(255, 152, 105, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 152, 105, 0.2);
+}
+
+.nav a.active {
+    color: #ff7433;
+    background: linear-gradient(135deg, rgba(255, 152, 105, 0.2), rgba(255, 116, 51, 0.15));
+    border: 2px solid rgba(255, 152, 105, 0.3);
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(255, 152, 105, 0.25);
+}
+
+.nav a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #ff7433;
+    border-radius: 50%;
+}
+
+/* Navigation icons */
+.nav a[href*="causes"]::before {
+    content: '🤝';
+    font-size: 14px;
+}
+
+.nav a[href*="achievements"]::before {
+    content: '🏆';
+    font-size: 14px;
+}
+
+.nav a[href*="impact"]::before {
+    content: '📊';
+    font-size: 14px;
+}
+
+.nav a[href*="contact"]::before {
+    content: '📞';
+    font-size: 14px;
+}
+
+.nav a[href="index.html"]::before {
+    content: '🏠';
+    font-size: 14px;
     color: #ff9869;
     transform: translateX(5px);
     border-color: #ff9869;
@@ -1232,7 +1286,7 @@ img {
 }
 
 .causes-donate-section .donate-btn {
-    padding: 16px 40px;
+    padding: 18px 40px;
     font-size: 18px;
     font-weight: 600;
 }
@@ -1948,7 +2002,7 @@ img {
 .quick-contact-form .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .quick-contact-form .form-group {
@@ -2440,10 +2494,28 @@ img {
 
 .donation-methods h3 {
     font-size: 20px;
-    font-weight: 600;
-    color: #333;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
     margin-bottom: 16px;
     text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+}
+
+.mobile-nav .nav a:hover {
+    border-color: #ff9869;
+    background: rgba(255, 152, 105, 0.1);
+    color: #ff7433;
+    transform: translateY(-2px);
+}
+
+.mobile-nav .nav a.active {
+    background: linear-gradient(135deg, #ff9869, #ff7433);
+    color: white;
+    border-color: #ff7433;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(255, 152, 105, 0.3);
 }
 
 .payment-options {
