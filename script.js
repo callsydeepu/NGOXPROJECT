@@ -723,6 +723,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // Redirect to donation page
             window.location.href = 'donate.html';
         });
+    
+    // Cause card donate button functionality
+    const causeDonateButtons = document.querySelectorAll('.donate-btn-overlay');
+    causeDonateButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card click event
+            
+            const cause = this.getAttribute('data-cause');
+            
+            // Add click animation
+            this.style.transform = 'translateX(-50%) scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(-50%) translateY(0)';
+            }, 150);
+            
+            // Store selected cause in localStorage for the donate page
+            localStorage.setItem('selectedCause', cause);
+            
+            // Navigate to donate page
+            window.location.href = 'donate.html';
+            
+            console.log('Donating to cause:', cause);
+        });
+    });
         
         // Enhanced hover effects
         button.addEventListener('mouseenter', function() {

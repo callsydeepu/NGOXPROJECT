@@ -597,18 +597,49 @@ img {
 .cause-card {
     flex: 0 0 320px;
     position: relative;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
-    scroll-snap-align: start;
-    background: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 300px;
 }
 
 .cause-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cause-card .donate-btn-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #ff9869;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 4px 16px rgba(255, 152, 105, 0.3);
+    z-index: 10;
+}
+
+.cause-card:hover .donate-btn-overlay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.cause-card .donate-btn-overlay:hover {
+    background: #ff7433;
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 152, 105, 0.4);
 }
 
 .cause-image {
@@ -646,12 +677,13 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.8) 100%);
     z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.cause-card:hover .cause-overlay {
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.9) 100%);
 }
 
 .cause-image {
