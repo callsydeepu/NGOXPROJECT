@@ -1,5 +1,8 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Set active navigation state based on current page
+    setActiveNavigation();
+    
     // Get all navigation links
     const navLinks = document.querySelectorAll('.nav a[href^="#"]:not([href="causes.html"])');
     
@@ -24,6 +27,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Function to set active navigation
+    function setActiveNavigation() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav a');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            
+            const href = link.getAttribute('href');
+            
+            // Check for exact matches or page-specific matches
+            if (currentPath.includes('causes') && href.includes('causes')) {
+                link.classList.add('active');
+            } else if (currentPath.includes('achievements') && href.includes('achievements')) {
+                link.classList.add('active');
+            } else if (currentPath.includes('donate') && href.includes('donate')) {
+                link.classList.add('active');
+            } else if ((currentPath === '/' || currentPath.includes('index')) && href === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
     
     // Mobile menu functionality
     function initializeMobileMenu() {

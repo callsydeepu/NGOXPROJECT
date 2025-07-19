@@ -38,9 +38,12 @@
 
 /* Active nav link */
 .nav a.active {
-    color: #ff9869;
-    background-color: rgba(255, 152, 105, 0.1);
-    border-radius: 6px;
+    color: #ff7433 !important;
+    background: linear-gradient(135deg, rgba(255, 152, 105, 0.2), rgba(255, 116, 51, 0.15)) !important;
+    border: 2px solid rgba(255, 152, 105, 0.3) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 16px rgba(255, 152, 105, 0.25) !important;
+    transform: translateY(-2px) !important;
 }
 
 /* Causes Grid Section */

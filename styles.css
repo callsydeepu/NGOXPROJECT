@@ -122,6 +122,16 @@ img {
     transform: translateY(-50%);
     z-index: 1001;
     transition: all 0.3s ease;
+    font-size: 28px;
+    color: #333;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background: rgba(255, 152, 105, 0.1);
+    color: #ff7433;
 }
 
 .hamburger:hover {
@@ -699,6 +709,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.8) 100%);
     z-index: 2;
     transition: all 0.3s ease;
 }
