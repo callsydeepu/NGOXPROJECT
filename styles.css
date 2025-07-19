@@ -1898,18 +1898,11 @@ img {
     overflow: hidden;
 }
 
-    display: flex;
-    gap: 32px;
-    transition: transform 0.5s ease;
-    padding: 0 16px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.causes-grid::-webkit-scrollbar {
-    display: none;
+.quick-contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.05), transparent);
@@ -2129,14 +2122,12 @@ img {
 .quick-contact-form .form-success p {
     color: #166534;
     font-size: 14px;
-    flex: 0 0 280px;
     animation: slideInUp 0.5s ease 0.2s both;
 }
 
 /* Footer */
 .footer {
     background-color: #f8f9fa;
-    height: 350px;
     padding: 80px 0 40px;
     margin-top: 80px;
     position: relative;
@@ -2181,7 +2172,7 @@ img {
 
 .footer-logo-img {
     width: 40px;
-    height: 100%;
+    height: 40px;
     object-fit: cover;
     background-color: #ff9869;
     border-radius: 50%;
@@ -2393,23 +2384,6 @@ img {
 .donation-amounts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
-/* Scroll Progress Bar */
-.scroll-progress {
-    width: 100%;
-    height: 4px;
-    background: #e5e7eb;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.scroll-progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #ff9869, #ff7433);
-    border-radius: 2px;
-    transition: width 0.3s ease;
-    width: 25%;
-}
     gap: 12px;
     margin-bottom: 24px;
 }
@@ -2718,10 +2692,6 @@ img {
         padding: 0 50px;
     }
     
-    .cause-card {
-        flex: 0 0 260px;
-    }
-    
     .hero {
         height: 400px;
     }
@@ -2835,9 +2805,8 @@ img {
         padding: 80px 40px 50px;
         gap: 25px 20px;
     }
-    .cause-card {
-        flex: 0 0 240px;
-        height: 320px;
+    
+    .stat-item {
         min-width: 180px;
         padding: 18px;
     }
@@ -3450,8 +3419,8 @@ img {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
     
-    .causes-grid {
-        gap: 24px;
+    .cause-image {
+        height: 250px;
     }
     
     .cause-title {
@@ -3652,9 +3621,9 @@ img {
         border-color: #ff9869;
     }
     
-    .cause-card {
-        flex: 0 0 220px;
-        height: 300px;
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
         padding: 40px 20px;
     }
     
@@ -3777,9 +3746,8 @@ img {
     }
     
     .cause-card {
-    .causes-grid {
-        gap: 20px;
-        padding: 0 12px;
+        height: 220px;
+        border-radius: 10px;
     }
     
     .cause-title {
@@ -4859,9 +4827,10 @@ img {
         height: 20px;
     }
     
-    .cause-card {
-        flex: 0 0 200px;
-        height: 280px;
+    .causes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        max-width: 400px;
     }
     
     .cause-card {
@@ -5681,9 +5650,8 @@ button:focus,
     /* Dark mode styles would go here */
 }
 
-    .causes-grid {
-        gap: 16px;
-        padding: 0 8px;
+/* Stack contact sections vertically on small screens */
+@media (max-width: 576px) {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 24px;
