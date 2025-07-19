@@ -202,125 +202,123 @@ document.addEventListener('DOMContentLoaded', function() {
     // Causes Carousel Functionality
     function initializeCausesCarousel() {
         const carousel = document.querySelector('.causes-grid');
+        const carouselContainer = document.querySelector('.causes-carousel-container');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const indicators = document.querySelectorAll('.carousel-indicator');
         const cards = document.querySelectorAll('.cause-card');
+        const progressFill = document.querySelector('.scroll-progress-fill');
         
-        if (!carousel || !prevBtn || !nextBtn) return null;
+        if (!carousel || !prevBtn || !nextBtn || !carouselContainer) return null;
         
-        let currentSlide = 0;
-        let cardsPerView = getCardsPerView();
-        let maxSlides = Math.ceil(cards.length / cardsPerView) - 1;
-        let isAnimating = false;
+        let isScrolling = false;
         let autoSlideInterval;
+        let currentScrollPosition = 0;
         
-        function getCardsPerView() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 992) return 2;
-            return 3;
+        function getCardWidth() {
+            const card = cards[0];
+            if (!card) return 320;
+            const cardRect = card.getBoundingClientRect();
+            const gap = 24; // Gap between cards
+            return cardRect.width + gap;
         }
         
-        function updateCarouselLayout() {
-            cardsPerView = getCardsPerView();
-            maxSlides = Math.ceil(cards.length / cardsPerView) - 1;
-            
-            // Reset to first slide if current slide is out of bounds
-            if (currentSlide > maxSlides) {
-                currentSlide = 0;
-            }
-            
-            updateCarousel();
-            updateIndicators();
+        function getMaxScroll() {
+            return carousel.scrollWidth - carousel.clientWidth;
+        }
+        
+        function updateScrollPosition() {
+            currentScrollPosition = carousel.scrollLeft;
             updateNavigationButtons();
-        }
-        
-        function updateCarousel() {
-            if (isAnimating) return;
-            
-            const translateX = -(currentSlide * (100 / cardsPerView));
-            carousel.style.transform = `translateX(${translateX}%)`;
-            
-            // Add staggered animation to visible cards
-            cards.forEach((card, index) => {
-                const cardSlide = Math.floor(index / cardsPerView);
-                if (cardSlide === currentSlide) {
-                    const delay = (index % cardsPerView) * 100;
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, delay);
-                }
-            });
-        }
-        
-        function updateIndicators() {
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
+            updateProgressBar();
+            updateFadeEdges();
         }
         
         function updateNavigationButtons() {
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === maxSlides;
+            const maxScroll = getMaxScroll();
+            prevBtn.disabled = currentScrollPosition <= 0;
+            nextBtn.disabled = currentScrollPosition >= maxScroll - 1;
         }
         
-        function goToSlide(slideIndex) {
-            if (isAnimating || slideIndex < 0 || slideIndex > maxSlides) return;
+        function updateProgressBar() {
+            if (!progressFill) return;
+            const maxScroll = getMaxScroll();
+            const progress = maxScroll > 0 ? (currentScrollPosition / maxScroll) * 100 : 0;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+        }
+        
+        function updateFadeEdges() {
+            const maxScroll = getMaxScroll();
+            carouselContainer.classList.toggle('at-start', currentScrollPosition <= 0);
+            carouselContainer.classList.toggle('at-end', currentScrollPosition >= maxScroll - 1);
+        }
+        
+        function scrollToPosition(position, smooth = true) {
+            if (isScrolling) return;
             
-            isAnimating = true;
-            currentSlide = slideIndex;
+            isScrolling = true;
+            carousel.scrollTo({
+                left: position,
+                behavior: smooth ? 'smooth' : 'auto'
+            });
             
-            updateCarousel();
-            updateIndicators();
-            updateNavigationButtons();
-            
-            // Reset animation lock
             setTimeout(() => {
-                isAnimating = false;
-            }, 600);
-            
-            // Reset auto-slide timer
-            resetAutoSlide();
+                isScrolling = false;
+                updateScrollPosition();
+            }, smooth ? 600 : 100);
         }
         
-        function nextSlide() {
-            if (currentSlide < maxSlides) {
-                goToSlide(currentSlide + 1);
+        function scrollByAmount(amount) {
+            const newPosition = Math.max(0, Math.min(currentScrollPosition + amount, getMaxScroll()));
+            scrollToPosition(newPosition);
+        }
+        
+        function scrollToNextCard() {
+            const cardWidth = getCardWidth();
+            scrollByAmount(cardWidth);
+        }
+        
+        function scrollToPrevCard() {
+            const cardWidth = getCardWidth();
+            scrollByAmount(-cardWidth);
+        }
+        
+        function autoScroll() {
+            const maxScroll = getMaxScroll();
+            if (currentScrollPosition >= maxScroll - 1) {
+                // Reset to beginning
+                scrollToPosition(0);
             } else {
-                goToSlide(0); // Loop back to first slide
+                scrollToNextCard();
             }
         }
         
-        function prevSlide() {
-            if (currentSlide > 0) {
-                goToSlide(currentSlide - 1);
-            } else {
-                goToSlide(maxSlides); // Loop to last slide
-            }
+        function startAutoScroll() {
+            autoSlideInterval = setInterval(autoScroll, 4000);
         }
         
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000); // Change slide every 5 seconds
-        }
-        
-        function stopAutoSlide() {
+        function stopAutoScroll() {
             if (autoSlideInterval) {
                 clearInterval(autoSlideInterval);
                 autoSlideInterval = null;
             }
         }
         
-        function resetAutoSlide() {
-            stopAutoSlide();
-            startAutoSlide();
+        function resetAutoScroll() {
+            stopAutoScroll();
+            startAutoScroll();
+        }
+        
+        function updateCarouselLayout() {
+            updateScrollPosition();
+            updateNavigationButtons();
+            updateProgressBar();
+            updateFadeEdges();
         }
         
         // Event listeners
         prevBtn.addEventListener('click', () => {
-            prevSlide();
+            scrollToPrevCard();
+            resetAutoScroll();
             
             // Add click animation
             prevBtn.style.transform = 'scale(0.9)';
@@ -330,7 +328,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         nextBtn.addEventListener('click', () => {
-            nextSlide();
+            scrollToNextCard();
+            resetAutoScroll();
             
             // Add click animation
             nextBtn.style.transform = 'scale(0.9)';
@@ -339,95 +338,160 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 150);
         });
         
-        // Indicator click handlers
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
-                
-                // Add click animation
-                indicator.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    indicator.style.transform = '';
-                }, 150);
-            });
+        // Scroll event listener
+        carousel.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                updateScrollPosition();
+            }
         });
         
-        // Touch/swipe support
+        // Enhanced touch/swipe support
         let touchStartX = 0;
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
+        let isDragging = false;
         
         carousel.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
-            stopAutoSlide();
+            isDragging = true;
+            stopAutoScroll();
+        });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.changedTouches[0].screenX;
+            const currentY = e.changedTouches[0].screenY;
+            const diffX = touchStartX - currentX;
+            const diffY = Math.abs(touchStartY - currentY);
+            
+            // Prevent vertical scrolling if horizontal swipe is detected
+            if (Math.abs(diffX) > diffY) {
+                e.preventDefault();
+            }
         });
         
         carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
+            isDragging = false;
             handleSwipe();
-            resetAutoSlide();
+            resetAutoScroll();
         });
         
         function handleSwipe() {
-            const swipeThreshold = 50;
+            const swipeThreshold = 80;
             const diffX = touchStartX - touchEndX;
             const diffY = Math.abs(touchStartY - touchEndY);
             
             // Only handle horizontal swipes
-            if (Math.abs(diffX) > swipeThreshold && diffY < 100) {
+            if (Math.abs(diffX) > swipeThreshold && diffY < 150) {
                 if (diffX > 0) {
-                    nextSlide(); // Swipe left - next slide
+                    scrollToNextCard(); // Swipe left - scroll right
                 } else {
-                    prevSlide(); // Swipe right - previous slide
+                    scrollToPrevCard(); // Swipe right - scroll left
                 }
             }
         }
         
-        // Pause auto-slide on hover
-        const carouselContainer = document.querySelector('.causes-carousel-container');
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-            carouselContainer.addEventListener('mouseleave', startAutoSlide);
-        }
+        // Mouse wheel support
+        carousel.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                // Horizontal scroll
+                e.preventDefault();
+                scrollByAmount(e.deltaX);
+                resetAutoScroll();
+            }
+        }, { passive: false });
+        
+        // Pause auto-scroll on hover
+        carouselContainer.addEventListener('mouseenter', stopAutoScroll);
+        carouselContainer.addEventListener('mouseleave', startAutoScroll);
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.target.closest('.causes')) {
+            if (e.target.closest('.causes') || document.activeElement === carousel) {
                 switch(e.key) {
                     case 'ArrowLeft':
                         e.preventDefault();
-                        prevSlide();
+                        scrollToPrevCard();
+                        resetAutoScroll();
                         break;
                     case 'ArrowRight':
                         e.preventDefault();
-                        nextSlide();
+                        scrollToNextCard();
+                        resetAutoScroll();
                         break;
                     case ' ':
                         e.preventDefault();
-                        nextSlide();
+                        scrollToNextCard();
+                        resetAutoScroll();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        scrollToPosition(0);
+                        resetAutoScroll();
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        scrollToPosition(getMaxScroll());
+                        resetAutoScroll();
                         break;
                 }
             }
+        });
+        
+        // Card click handlers with improved UX
+        cards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                // Scroll card into center view
+                const cardWidth = getCardWidth();
+                const containerWidth = carousel.clientWidth;
+                const cardPosition = index * cardWidth;
+                const centerPosition = cardPosition - (containerWidth / 2) + (cardWidth / 2);
+                
+                scrollToPosition(Math.max(0, Math.min(centerPosition, getMaxScroll())));
+                resetAutoScroll();
+            });
         });
         
         // Initialize carousel
         updateCarouselLayout();
-        startAutoSlide();
+        startAutoScroll();
         
-        // Add entrance animation for cards
+        // Enhanced entrance animation for cards
         cards.forEach((card, index) => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transform = 'translateY(40px) scale(0.9)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         });
         
         // Trigger initial animation
         setTimeout(() => {
-            updateCarousel();
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1)';
+                }, index * 150);
+            });
         }, 100);
+        
+        // Intersection Observer for performance optimization
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.willChange = 'transform';
+                } else {
+                    entry.target.style.willChange = 'auto';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => cardObserver.observe(card));
         
         // Return controller object
         return {
