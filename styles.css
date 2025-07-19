@@ -586,6 +586,8 @@ img {
     scroll-snap-type: x mandatory;
     padding-bottom: 20px;
     width: 100%;
+    transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .causes-grid::-webkit-scrollbar {
@@ -811,6 +813,35 @@ img {
     .carousel-nav-btn {
         width: 48px;
         height: 48px;
+        border-radius: 50%;
+        border: 2px solid #e5e7eb;
+        background: white;
+        color: #6b7280;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+    }
+    
+    .carousel-nav-btn:hover {
+        border-color: #ff9869;
+        color: #ff9869;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 152, 105, 0.2);
+    }
+    
+    .carousel-nav-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    
+    .carousel-nav-btn:disabled:hover {
+        border-color: #e5e7eb;
+        color: #6b7280;
+        transform: none;
+        box-shadow: none;
     }
     
     .carousel-nav-btn svg {
@@ -877,6 +908,7 @@ img {
     .causes-grid {
         padding: 0 20px;
         gap: 16px;
+        overflow: visible;
     }
     
     .carousel-nav {
@@ -918,6 +950,7 @@ img {
     .causes-grid {
         padding: 0 15px;
         gap: 12px;
+        overflow: visible;
     }
     
     .carousel-indicators {
@@ -928,6 +961,11 @@ img {
     .carousel-indicator {
         width: 10px;
         height: 10px;
+    }
+    
+    .causes-carousel-container {
+        overflow: hidden;
+        position: relative;
     }
 }
 
@@ -5245,4 +5283,22 @@ button:focus,
         padding: 8px 10px;
         font-size: 11px;
     }
+}
+
+/* Scroll Progress */
+.scroll-progress {
+    width: 100%;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    margin: 32px 0;
+    overflow: hidden;
+}
+
+.scroll-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff9869, #ff7433);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s ease;
 }
