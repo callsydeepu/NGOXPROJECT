@@ -65,7 +65,6 @@
     border-radius: 20px;
     padding: 40px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     border: 1px solid #f0f0f0;
     transition: all 0.3s ease;
     position: relative;
@@ -74,7 +73,6 @@
 
 .cause-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
 }
 
 .cause-item::before {
@@ -100,7 +98,6 @@
     margin: 0 auto 32px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -207,7 +204,6 @@
 .cta-btn:hover {
     background: #ff7433;
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(255, 152, 105, 0.4);
 }
 
 .cta-btn:active {
