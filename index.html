@@ -55,59 +55,211 @@
         <section class="causes" id="causes">
             <div class="section-header">
                 <h2 class="section-title">Our Causes</h2>
-                <div class="nav-icon">
-                    <button class="carousel-nav-btn" id="prevBtn" aria-label="Previous slide">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-nav-btn" id="nextBtn" aria-label="Next slide">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
 
             <div class="causes-content">
-                <div class="causes-carousel-container">
-                    <div class="causes-grid">
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="/rectangle-5.png" alt="Food & Nutrition" class="cause-image">
-                            <h3 class="cause-title">Food & Nutrition</h3>
-                        </div>
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="/rectangle-6.png" alt="Animal Rescue & Care" class="cause-image">
-                            <h3 class="cause-title">Animal Rescue & Care</h3>
-                        </div>
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="/rectangle-7.png" alt="Orphanage Care & Support" class="cause-image">
-                            <h3 class="cause-title">Orphanage Care & Support</h3>
-                        </div>
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Education for Children" class="cause-image">
-                            <h3 class="cause-title">Education for Children</h3>
-                        </div>
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Community Support" class="cause-image">
-                            <h3 class="cause-title">Community Support</h3>
-                        </div>
-                        <div class="cause-card">
-                            <div class="cause-overlay"></div>
-                            <img src="https://images.pexels.com/photos/7516340/pexels-photo-7516340.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Healthcare Services" class="cause-image">
-                            <h3 class="cause-title">Healthcare Services</h3>
-                        </div>
-                    </div>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                    </svg>
+                    <span>Scroll horizontally to explore our causes</span>
                 </div>
                 
-                <div class="carousel-indicators">
-                    <div class="carousel-indicator active" data-slide="0"></div>
-                    <div class="carousel-indicator" data-slide="1"></div>
+                <div class="causes-scroll-container">
+                    <div class="causes-grid">
+                        <div class="cause-card">
+                            <img src="/rectangle-5.png" alt="Food & Nutrition" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Food & Nutrition</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Food & Nutrition for the Underprivileged</h4>
+                                <p class="cause-description">Providing fresh meals and nutrition support to those in need across our community.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹2,45,000</span>
+                                        <span class="goal-target">Goal: ₹5,00,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="49"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cause-card">
+                            <img src="/rectangle-6.png" alt="Animal Rescue & Care" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Animal Rescue & Care</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Animal Rescue & Care</h4>
+                                <p class="cause-description">Rescuing, treating, and providing shelter for injured and abandoned animals.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹1,85,000</span>
+                                        <span class="goal-target">Goal: ₹3,00,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="62"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cause-card">
+                            <img src="/rectangle-7.png" alt="Orphanage Care & Support" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Orphanage Care & Support</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Orphanage Care & Support</h4>
+                                <p class="cause-description">Providing shelter, education, and care for orphaned children in our community.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹3,20,000</span>
+                                        <span class="goal-target">Goal: ₹4,50,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="71"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cause-card">
+                            <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Education for Children" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Education for Children</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Education for Needy Children</h4>
+                                <p class="cause-description">Supporting education and learning opportunities for underprivileged children.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹1,95,000</span>
+                                        <span class="goal-target">Goal: ₹3,50,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="56"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cause-card">
+                            <img src="https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Community Support" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Community Support</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Community Development</h4>
+                                <p class="cause-description">Building stronger communities through various support programs and initiatives.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹2,80,000</span>
+                                        <span class="goal-target">Goal: ₹4,00,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="70"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cause-card">
+                            <img src="https://images.pexels.com/photos/7516340/pexels-photo-7516340.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Healthcare Services" class="cause-image">
+                            <div class="cause-overlay">
+                                <h3 class="cause-title">Healthcare Services</h3>
+                            </div>
+                            <div class="cause-info">
+                                <h4 class="cause-name">Healthcare & Medical Aid</h4>
+                                <p class="cause-description">Providing essential healthcare services and medical support to those in need.</p>
+                                <div class="cause-stats">
+                                    <div class="cause-goal">
+                                        <span class="goal-raised">₹1,65,000</span>
+                                        <span class="goal-target">Goal: ₹2,50,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" data-progress="66"></div>
+                                    </div>
+                                </div>
+                                <div class="cause-actions">
+                                    <button class="donate-btn-card">Donate Now</button>
+                                    <button class="action-btn favorite-btn" title="Add to favorites">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="action-btn share-btn" title="Share this cause">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="causes-donate-section">

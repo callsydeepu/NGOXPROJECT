@@ -451,63 +451,40 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 56px;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-}
-
-.section-title {
-    background-color: #dfffb3;
-    padding: 13px 29px;
-    font-weight: 500;
-    font-size: 40px;
-    color: black;
-    margin: 0;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 60px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-}
-
-.section-title::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s ease;
-}
-
-.section-title:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(223, 255, 179, 0.4);
-}
-
 .section-title:hover::before {
     left: 100%;
 }
 
 .nav-icon {
     display: flex;
-    gap: 12px;
-    align-items: center;
+    height: 48px;
+    cursor: pointer;
+.causes-scroll-container {
+    position: relative;
+    margin-bottom: 40px;
+    cursor: grab;
 }
 
-.carousel-nav-btn {
-    width: 48px;
-    height: 48px;
-    border: 2px solid #e5e7eb;
-    background: white;
-    border-radius: 50%;
+.causes-scroll-container:active {
+    cursor: grabbing;
+}
+
+.causes-grid {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    gap: 24px;
+    padding: 20px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.causes-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
     transition: all 0.3s ease;
     color: #6b7280;
 }
@@ -564,7 +541,7 @@ img {
     display: flex;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 100%;
-}
+    flex: 0 0 350px;
 
 .cause-card {
     flex: 0 0 33.333%;
@@ -572,6 +549,7 @@ img {
     overflow: hidden;
     transition: all 0.4s ease;
     cursor: pointer;
+    scroll-snap-align: start;
 }
 
 .cause-card:hover {
@@ -634,32 +612,28 @@ img {
 }
 
 /* Carousel indicators */
-.carousel-indicators {
+
+.scroll-hint {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666;
+    font-size: 14px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-top: 40px;
+    gap: 8px;
 }
 
-.carousel-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #e5e7eb;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.scroll-hint svg {
+    width: 20px;
+    height: 20px;
+    animation: scrollHint 2s ease-in-out infinite;
 }
 
-.carousel-indicator.active {
-    background: #ff9869;
-    transform: scale(1.2);
+@keyframes scrollHint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
 }
-
-.carousel-indicator:hover {
-    background: #ff9869;
-    transform: scale(1.1);
-}
-
 .causes-donate-section {
     text-align: center;
 }
@@ -797,6 +771,11 @@ img {
 .causes-grid::-webkit-scrollbar {
     height: 8px;
 }
+    .causes-grid {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
 
 .causes-grid::-webkit-scrollbar-track {
     background: #f1f1f1;
@@ -2709,7 +2688,7 @@ img {
     .stat-value {
         font-size: 14px;
     }
-    
+        flex: 0 0 320px;
     .stat-label {
         font-size: 14px;
     }
@@ -2727,6 +2706,11 @@ img {
     
     .section-title {
         font-size: 36px;
+    }
+    
+    .causes-grid {
+        padding-left: 25px;
+        padding-right: 25px;
     }
     
     .causes-grid-wrapper {
@@ -4054,7 +4038,7 @@ img {
         width: 90px;
         height: 32px;
         font-size: 12px;
-        padding: 6px 12px;
+        flex: 0 0 280px;
     }
     
     .hero {
@@ -4452,8 +4436,14 @@ img {
         height: 16px;
     }
     
+    .causes-grid {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 16px;
+    }
+    
     .hamburger-line {
-        width: 22px;
+        flex: 0 0 260px;
     }
     
     .hero {
