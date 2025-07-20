@@ -8,11 +8,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    open: true,
-    headers: {
-      'Cross-Origin-Embedder-Policy': 'unsafe-none',
-      'Cross-Origin-Opener-Policy': 'unsafe-none'
-    }
+    open: true
   },
   build: {
     outDir: 'dist',
